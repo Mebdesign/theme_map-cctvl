@@ -10796,6 +10796,10 @@ fieldset:disabled .btn {
   overflow-y: scroll !important;
 }
 
+.shadow-custom-brown {
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(73, 52, 69, 0.4) !important;
+}
+
 .shadow-primary {
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(233, 30, 99, 0.4) !important;
 }
