@@ -23,6 +23,14 @@ Template Name: home
             </div>  
         </div>
 
+
+
+
+
+
+
+        
+
         <?php get_footer() ?>
 
     </main>

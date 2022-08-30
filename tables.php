@@ -31,7 +31,9 @@
                     <span class="text-xs">Standard: <span class="text-dark ms-sm-2 font-weight-bold"><?php  echo($telephone); ?></span></span>
                   </div>
                   <div class="ms-auto text-end">
+                  <?php if( current_user_can( 'edit_posts' ) ) : ?>
                     <a class="btn btn-link text-dark px-3 mb-0" href="<?php  echo(get_edit_post_link($id)) ?>"><i class="material-icons text-sm me-2">edit</i>Edit</a>
+                  <?php endif ?>
                   </div>
                 </li>
               </ul>
