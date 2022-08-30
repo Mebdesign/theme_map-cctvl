@@ -13,7 +13,7 @@ function theme_styles() {
 
 add_action( 'wp_enqueue_scripts', 'theme_scripts' );
 function theme_scripts() {
-
+    // Load all of the scripts that need to appear on all pages
     wp_enqueue_script( 'kit-fontawesome', "https://kit.fontawesome.com/42d5adcbca.js" );
     wp_enqueue_script( 'popper', get_template_directory_uri() . "/assets/js/core/popper.min.js", "", false, true );
     wp_enqueue_script( 'bootstrap', get_template_directory_uri() . "/assets/js/core/bootstrap.min.js", "", false, true );
@@ -23,3 +23,14 @@ function theme_scripts() {
     wp_enqueue_script( 'github-button', "https://buttons.github.io/buttons.js", "", false, true );
     wp_enqueue_script( 'center-control', get_template_directory_uri() . "/assets/js/material-dashboard.min.js?v=3.0.4", "", false, true );
 }
+
+function register_my_menus() {
+    // Load menu options
+    register_nav_menus(
+      array(
+        'header-menu' => __( 'Header Menu' ),
+        'extra-menu' => __( 'Extra Menu' )
+       )
+     );
+   }
+   add_action( 'init', 'register_my_menus' );
