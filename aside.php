@@ -17,8 +17,7 @@
               'container_id'    => FALSE,
               'menu_id'         => FALSE,
               'depth'           => 1,
-              'link_before'     => '<div class="text-white text-center me-2 d-flex align-items-center justify-content-center nav-link-text ms-1">
-              <i class="material-icons opacity-10" style="margin-right:5px;">dashboard</i>' , 
+              'link_before'     => '<div class="text-white text-center me-2 d-flex align-items-center justify-content-center nav-link-text ms-1">',
               'link_after' => '</div> '
           ) 
         ); 
