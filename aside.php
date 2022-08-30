@@ -9,18 +9,20 @@
     <hr class="horizontal light mt-0 mb-2">
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <?php 
-        wp_nav_menu( 
-          array( 
-              'theme_location'  => 'header-menu',
-              'menu_class'      => 'navbar-nav',
-              'container'       => FALSE,
-              'container_id'    => FALSE,
-              'menu_id'         => FALSE,
-              'depth'           => 1,
-              'link_before'     => '<div class="text-white text-center me-2 d-flex align-items-center justify-content-center nav-link-text ms-1">',
-              'link_after' => '</div> '
-          ) 
-        ); 
+
+          wp_nav_menu( 
+            array( 
+                'theme_location'  => 'header-menu',
+                'menu_class'      => 'navbar-nav',
+                'container'       => FALSE,
+                'container_id'    => FALSE,
+                'menu_id'         => FALSE,
+                'depth'           => 1,
+                'link_before'     => '<div class="text-white text-center me-2 d-flex align-items-center justify-content-center nav-link-text ms-1">',
+                'link_after' => '</div> '
+            ) 
+          ); 
+
       ?>
        <!--
       <ul class="navbar-nav">
