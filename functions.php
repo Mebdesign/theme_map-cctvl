@@ -37,18 +37,25 @@ function register_my_menus() {
 
 
 /* Add custom classes to list item "li" */
-
 function _namespace_menu_item_class( $classes, $item ) {       
     $classes[] = "nav-item"; // you can add multiple classes here
     return $classes;
 } 
-
 add_filter( 'nav_menu_css_class' , '_namespace_menu_item_class' , 10, 2 );
 
 /* Add custom class to link in menu */
-
 function _namespace_modify_menuclass($ulclass) {
     return preg_replace('/<a /', '<a class="nav-link text-white "', $ulclass);
 }
-
 add_filter('wp_nav_menu', '_namespace_modify_menuclass');
+
+/* Disabled admin bar for subscribers */
+function disable_admin_bar_for_subscribers(){
+    if ( is_user_logged_in() ):
+        global $current_user;
+        if( !empty( $current_user->caps['subscriber'] ) ):
+            add_filter('show_admin_bar', '__return_false');
+        endif;
+    endif;
+}
+add_action('init', 'disable_admin_bar_for_subscribers', 9);

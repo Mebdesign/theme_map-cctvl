@@ -19,7 +19,7 @@
         <div class="col-md-7 mt-4">
           <div class="card">
             <div class="card-header pb-0 px-3">
-              <h6 class="mb-0">Information sur le site</h6>
+              <h6 class="mb-0">Responsable du site</h6>
             </div>
             <div class="card-body pt-4 p-3">
               <ul class="list-group">
@@ -92,7 +92,7 @@
               <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                   <div class="bg-gradient-custom-brown shadow-custom-brown border-radius-lg pt-4 pb-3">
-                    <h6 class="text-white text-capitalize ps-3">Téléphonie fixe - <?php the_title(); ?> </h6>
+                    <h6 class="text-white ps-3">Téléphonie fixe - <?php the_title(); ?> </h6>
                   </div>
                 </div>
                 <div class="card-body px-0 pb-2">
@@ -165,7 +165,7 @@
               <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                   <div class="bg-gradient-custom-brown shadow-custom-brown border-radius-lg pt-4 pb-3">
-                    <h6 class="text-white text-capitalize ps-3">Téléphonie Mobile- <?php the_title(); ?></h6>
+                    <h6 class="text-white ps-3">Téléphonie Mobile- <?php the_title(); ?></h6>
                   </div>
                 </div>
                 <div class="card-body px-0 pb-2">
@@ -234,7 +234,7 @@
               <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                   <div class="bg-gradient-custom-brown shadow-custom-brown border-radius-lg pt-4 pb-3">
-                    <h6 class="text-white text-capitalize ps-3">Copieurs & impressions - <?php the_title(); ?></h6>
+                    <h6 class="text-white ps-3">Copieurs & impressions - <?php the_title(); ?></h6>
                   </div>
                 </div>
                 <div class="card-body px-0 pb-2">
