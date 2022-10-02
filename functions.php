@@ -59,3 +59,12 @@ function disable_admin_bar_for_subscribers(){
     endif;
 }
 add_action('init', 'disable_admin_bar_for_subscribers', 9);
+
+function my_login_logo() { ?>
+    <style type="text/css">
+        #login h1 a, .login h1 a {
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/assets/img/logos/Logo-CCTVL-84.png);
+        }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_logo' ); 
