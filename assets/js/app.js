@@ -8,7 +8,6 @@ if (win && document.querySelector('#sidenav-scrollbar')) {
 }
 
 document.addEventListener("DOMContentLoaded", function(event) { 
-  var label = document.getElementsByClassName('user_login')
   var input = document.getElementById('user_login')
 
   if(input.value !== '') {
