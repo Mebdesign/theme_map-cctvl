@@ -91,9 +91,14 @@
             <div class="col-12">
               <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                  <div class="bg-gradient-custom-brown shadow-custom-brown border-radius-lg pt-4 pb-3">
-                    <h6 class="text-white ps-3">Téléphonie fixe - <?php the_title(); ?> </h6>
-                  </div>
+                  <div class="bg-gradient-custom-brown shadow-custom-brown border-radius-lg pt-4 pb-3 d-flex justify-content-between">                   
+                    <div class="d-flex align-items-center">
+                      <h6 class="text-white ps-3">Téléphonie fixe - <?php the_title(); ?> </h6>
+                    </div>             
+                    <div class="form-check form-switch d-flex align-items-center pe-3">
+                        <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault" checked>
+                    </div>                     
+                  </div>                  
                 </div>
                 <div class="card-body px-0 pb-2">
                   <div class="table-responsive p-0">
@@ -164,9 +169,14 @@
             <div class="col-12">
               <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                  <div class="bg-gradient-custom-brown shadow-custom-brown border-radius-lg pt-4 pb-3">
+                  <div class="bg-gradient-custom-brown shadow-custom-brown border-radius-lg pt-4 pb-3 d-flex justify-content-between">                   
+                    <div class="d-flex align-items-center">
                     <h6 class="text-white ps-3">Téléphonie Mobile- <?php the_title(); ?></h6>
-                  </div>
+                    </div>             
+                    <div class="form-check form-switch d-flex align-items-center pe-3">
+                        <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault" checked>
+                    </div>                     
+                  </div>                  
                 </div>
                 <div class="card-body px-0 pb-2">
                   <div class="table-responsive p-0">
@@ -233,8 +243,13 @@
             <div class="col-12">
               <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                  <div class="bg-gradient-custom-brown shadow-custom-brown border-radius-lg pt-4 pb-3">
-                    <h6 class="text-white ps-3">Copieurs & impressions - <?php the_title(); ?></h6>
+                  <div class="bg-gradient-custom-brown shadow-custom-brown border-radius-lg pt-4 pb-3 d-flex justify-content-between">                   
+                    <div class="d-flex align-items-center">
+                        <h6 class="text-white ps-3">Copieurs & impressions - <?php the_title(); ?></h6>
+                    </div>             
+                    <div class="form-check form-switch d-flex align-items-center pe-3">
+                        <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault" checked>
+                    </div>                     
                   </div>
                 </div>
                 <div class="card-body px-0 pb-2">
