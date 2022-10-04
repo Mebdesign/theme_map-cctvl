@@ -8,10 +8,9 @@ if (win && document.querySelector('#sidenav-scrollbar')) {
 }
 
 document.addEventListener("DOMContentLoaded", function(event) { 
-  var input = document.getElementById('user_login')
-
-  if(input.value !== '') {
-    input.parentElement.classList.add("focused", "is-focused")
+  var input_user_login = document.getElementById('user_login')
+  if(input_user_login?.value !== '') {
+    input_user_login?.parentElement?.classList?.add("focused", "is-focused")
   }
 });
 

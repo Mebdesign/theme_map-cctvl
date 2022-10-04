@@ -96,7 +96,7 @@
                       <h6 class="text-white ps-3">Téléphonie fixe - <?php the_title(); ?> </h6>
                     </div>             
                     <div class="form-check form-switch d-flex align-items-center pe-3">
-                        <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault" checked>
+                        <input class="form-check-input ms-auto" type="checkbox" class="flexSwitchCheckDefault" >
                     </div>                     
                   </div>                  
                 </div>
@@ -174,7 +174,7 @@
                     <h6 class="text-white ps-3">Téléphonie Mobile- <?php the_title(); ?></h6>
                     </div>             
                     <div class="form-check form-switch d-flex align-items-center pe-3">
-                        <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault" checked>
+                        <input class="form-check-input ms-auto" type="checkbox" class="flexSwitchCheckDefault" checked>
                     </div>                     
                   </div>                  
                 </div>
@@ -248,7 +248,7 @@
                         <h6 class="text-white ps-3">Copieurs & impressions - <?php the_title(); ?></h6>
                     </div>             
                     <div class="form-check form-switch d-flex align-items-center pe-3">
-                        <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault" checked>
+                        <input class="form-check-input ms-auto" type="checkbox" class="flexSwitchCheckDefault" checked>
                     </div>                     
                   </div>
                 </div>
