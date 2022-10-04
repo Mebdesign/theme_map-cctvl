@@ -63,8 +63,19 @@ add_action('init', 'disable_admin_bar_for_subscribers', 9);
 function my_login_logo() { ?>
     <style type="text/css">
         #login h1 a, .login h1 a {
-            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/assets/img/logos/Logo-CCTVL-84.png);
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/assets/img/logos/Logo-CCTVL-84.png) !important;
         }
     </style>
 <?php }
 add_action( 'login_enqueue_scripts', 'my_login_logo' ); 
+
+// Redirect default URL link to a custom page
+add_action('init','custom_login');
+function custom_login(){
+ global $pagenow;
+ if( 'wp-login.php' == $pagenow  && $_GET['action']!="logout" && $_GET['action']!= "lostpassword" ) {
+  wp_redirect(get_site_url() . '/custom-login');
+  exit();
+ }
+}
+
