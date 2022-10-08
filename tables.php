@@ -96,11 +96,11 @@
                       <h6 class="text-white ps-3">Téléphonie fixe - <?php the_title(); ?> </h6>
                     </div>             
                     <div class="form-check form-switch d-flex align-items-center pe-3">
-                        <input class="form-check-input ms-auto" type="checkbox" class="flexSwitchCheckDefault" >
+                        <input class="form-check-input ms-auto flexSwitchCheckDefault" type="checkbox" >
                     </div>                     
                   </div>                  
                 </div>
-                <div class="card-body px-0 pb-2">
+                <div class="card-body card-body-toggled px-0 pb-2">
                   <div class="table-responsive p-0">
                     <table class="table align-items-center mb-0">
                       <thead>
@@ -174,11 +174,11 @@
                     <h6 class="text-white ps-3">Téléphonie Mobile- <?php the_title(); ?></h6>
                     </div>             
                     <div class="form-check form-switch d-flex align-items-center pe-3">
-                        <input class="form-check-input ms-auto" type="checkbox" class="flexSwitchCheckDefault" checked>
+                        <input class="form-check-input ms-auto flexSwitchCheckDefault" type="checkbox" >
                     </div>                     
                   </div>                  
                 </div>
-                <div class="card-body px-0 pb-2">
+                <div class="card-body card-body-toggled  px-0 pb-2">
                   <div class="table-responsive p-0">
                     <table class="table align-items-center mb-0">
                       <thead>
@@ -248,11 +248,11 @@
                         <h6 class="text-white ps-3">Copieurs & impressions - <?php the_title(); ?></h6>
                     </div>             
                     <div class="form-check form-switch d-flex align-items-center pe-3">
-                        <input class="form-check-input ms-auto" type="checkbox" class="flexSwitchCheckDefault" checked>
+                        <input class="form-check-input ms-auto flexSwitchCheckDefault" type="checkbox">
                     </div>                     
                   </div>
                 </div>
-                <div class="card-body px-0 pb-2">
+                <div class="card-body card-body-toggled px-0 pb-2">
                   <div class="table-responsive p-0">
                     <table class="table align-items-center mb-0">
                       <thead>
