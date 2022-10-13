@@ -69,6 +69,16 @@ function my_login_logo() { ?>
 <?php }
 add_action( 'login_enqueue_scripts', 'my_login_logo' ); 
 
+function disable_check_icon_login_page() { ?>
+    <style type="text/css">
+        input[type=checkbox]:checked::before,
+        input#rememberme.form-check-input::before {
+            content: none !important;
+    }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'disable_check_icon_login_page' ); 
+
 // Redirect default URL link to a custom page
 add_action('init','custom_login');
 function custom_login(){
