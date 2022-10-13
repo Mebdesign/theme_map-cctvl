@@ -79,6 +79,14 @@ function disable_check_icon_login_page() { ?>
 <?php }
 add_action( 'login_enqueue_scripts', 'disable_check_icon_login_page' ); 
 
+// changing the logo link from wordpress.org to your site
+function mb_login_url() {  return home_url(); }
+add_filter( 'login_headerurl', 'mb_login_url' );
+
+// changing the title text on the logo to show your site name
+function mb_login_title() { return get_option( 'blogname' ); }
+add_filter( 'login_headertitle', 'mb_login_title' );
+
 // Redirect default URL link to a custom page
 add_action('init','custom_login');
 function custom_login(){
