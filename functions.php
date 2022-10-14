@@ -95,5 +95,9 @@ function custom_login(){
   wp_redirect(get_site_url() . '/custom-login');
   exit();
  }
+ if( 'wp-login.php' == $pagenow  && $_GET['action']== "lostpassword" ) {
+    wp_redirect(get_site_url() . '/custom-login?action=lostpassword');
+    exit();
+}
 }
 
