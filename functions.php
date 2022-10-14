@@ -90,14 +90,15 @@ add_filter( 'login_headertitle', 'mb_login_title' );
 // Redirect default URL link to a custom page
 add_action('init','custom_login');
 function custom_login(){
- global $pagenow;
- if( 'wp-login.php' == $pagenow  && $_GET['action']!="logout" && $_GET['action']!= "lostpassword" ) {
-  wp_redirect(get_site_url() . '/custom-login');
-  exit();
- }
- if( 'wp-login.php' == $pagenow  && $_GET['action']== "lostpassword" ) {
-    wp_redirect(get_site_url() . '/custom-login?action=lostpassword');
+    global $pagenow;
+    if( 'wp-login.php' == $pagenow  && $_GET['action']!="logout" && $_GET['action']!= "lostpassword" ) {
+    wp_redirect(get_site_url() . '/custom-login');
     exit();
+    }
+    if( 'wp-login.php' == $pagenow  && $_GET['action']== "lostpassword" ) {
+        wp_redirect(get_site_url() . '/custom-login?action=lostpassword');
+        exit();
+    }
 }
-}
+
 

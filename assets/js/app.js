@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     input_user_login?.parentElement?.classList?.add("focused", "is-focused")
   }
 
-  eye_dashicon.addEventListener("click", function(event) { 
+  eye_dashicon?.addEventListener("click", function(event) { 
     console.log('alerte')
     if(this.classList.contains('dashicons-visibility')){
       this.classList.toggle("dashicons-hidden")
