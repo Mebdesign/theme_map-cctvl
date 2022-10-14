@@ -46,15 +46,15 @@
             <div class="card-header pb-0 px-3">
               <div class="row">
                 <div class="col-md-6">
-                  <h6 class="mb-0">Your Transaction's</h6>
-                </div>
+                  <h6 class="mb-0">En attente de data...</h6>
+                </div><!--
                 <div class="col-md-6 d-flex justify-content-start justify-content-md-end align-items-center">
                   <i class="material-icons me-2 text-lg">date_range</i>
                   <small>23 - 30 March 2020</small>
-                </div>
+                </div>-->
               </div>
             </div>
-            <div class="card-body pt-4 p-3">
+            <!--<div class="card-body pt-4 p-3">
               <ul class="list-group">
                 <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                   <div class="d-flex align-items-center">
@@ -82,6 +82,7 @@
                 </li>
               </ul>
             </div>
+            -->
           </div>
         </div> 
       </div>

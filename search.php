@@ -35,7 +35,7 @@
                         <ul class="list-group">
                             <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">                    
                                 <div class="d-flex flex-column">
-                                    <h6 class="mb-1 text-dark font-weight-bold text-sm"><?php the_title();  ?></h6>
+                                    <h3 class="mb-1 text-dark font-weight-bold text-sm"><?php the_title();  ?></h3>
                                     <?php if( $posts ):  ?>
                                         <?php foreach( $posts as $post ): ?>
                                             <?php if( $post->ID ===  $searchID ):  ?>
