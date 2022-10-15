@@ -298,10 +298,10 @@
                                 <p class="text-xs text-secondary mb-0"><?php  echo($marque); ?></p>
                               </td>                                  
                               <td class="align-middle text-center text-sm">
-                                <span class="badge badge-sm bg-gradient-success"><?php  echo($start); ?></span>
+                                <span class="text-secondary text-xs font-weight-bold"><?php  echo($start); ?></span>
                               </td>
                               <td class="align-middle text-center">
-                                <span class="text-secondary text-xs font-weight-bold"><?php  echo($end); ?></span>
+                                <span class="badge badge-sm bg-gradient-success"><?php  echo($end); ?></span>
                               </td>
                               <td class="align-middle">
                                 <?php if( current_user_can( 'edit_posts' ) ) : ?>
