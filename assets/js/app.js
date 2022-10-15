@@ -16,9 +16,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var switcher = document.querySelectorAll('.flexSwitchCheckDefault')
   switcher.forEach(function(el) {
     el.addEventListener('click', function(){
-      var _this = this.closest(".card-header").nextElementSibling
-      _this.style.display = _this.style.display === 'none' ? 'block' : 'none';
-
+      var target = this.closest(".card-header").nextElementSibling
+      target.style.display = target.style.display === 'none' ? 'block' : 'none';
     })
   });
 
