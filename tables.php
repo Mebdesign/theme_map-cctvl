@@ -15,6 +15,7 @@
       <?php $email = get_field( "email" ); ?>
       <?php $telephone = get_field( "telephone" ); ?>
       <?php $adresse = get_field( "adresse" ); ?>
+      <?php $mobile = get_field( "mobile" ); ?> 
 
       <div class="row mb-4">
         <div class="col-md-7 mt-4">
@@ -30,7 +31,8 @@
                     <span class="mb-2 text-xs">Nom du service: <span class="text-dark font-weight-bold ms-sm-2"><?php  echo($nom_du_service); ?></span></span>
                     <span class="mb-2 text-xs">Adresse du service: <span class="text-dark font-weight-bold ms-sm-2"><?php  echo($adresse); ?></span></span>
                     <span class="mb-2 text-xs">Adresse email: <span class="text-dark ms-sm-2 font-weight-bold"><?php  echo($email); ?></span></span>
-                    <span class="text-xs">Standard: <span class="text-dark ms-sm-2 font-weight-bold"><?php  echo($telephone); ?></span></span>
+                    <span class="mb-2 text-xs">Standard: <span class="text-dark ms-sm-2 font-weight-bold"><?php  echo($telephone); ?></span></span>
+                     <span class="mb-2 text-xs">Mobile: <span class="text-dark ms-sm-2 font-weight-bold"><?php  echo($mobile); ?></span></span> 
                   </div>
                   <div class="ms-auto text-end">
                   <?php if( current_user_can( 'edit_posts' ) ) : ?>

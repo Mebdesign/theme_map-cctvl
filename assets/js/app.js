@@ -9,6 +9,19 @@ if (win && document.querySelector('#sidenav-scrollbar')) {
 }
 
 document.addEventListener("DOMContentLoaded", function(event) { 
+  document.querySelectorAll('.card-body-toggled').forEach(function(el) {
+    el.style.display = 'none';
+  });
+
+  var switcher = document.querySelectorAll('.flexSwitchCheckDefault')
+  switcher.forEach(function(el) {
+    el.addEventListener('click', function(){
+      var _this = this.closest(".card-header").nextElementSibling
+      _this.style.display = _this.style.display === 'none' ? 'block' : 'none';
+
+    })
+  });
+
   var eye_dashicon = document.querySelector('.wp-pwd .dashicons-visibility')
   var input_user_login = document.getElementById('user_login')
   if(input_user_login?.value !== '') {
@@ -16,7 +29,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 
   eye_dashicon?.addEventListener("click", function(event) { 
-    console.log('alerte')
     if(this.classList.contains('dashicons-visibility')){
       this.classList.toggle("dashicons-hidden")
       this.classList.remove("dashicons-visibility")
@@ -28,6 +40,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
       this.parentElement.previousElementSibling.type = 'password'
     }
    })
+
+
   
 });
 

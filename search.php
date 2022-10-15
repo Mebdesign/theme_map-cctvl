@@ -128,17 +128,17 @@
 
     <?php get_template_part('navbar'); ?>
       <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-8">
             <?php if( $the_query->have_posts() ): ?>
                 <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
                     <?php //if( $post->ID ===  $searchID ):  ?>
                         <div class="card mb-3">
                             <div class="card-header pb-0 p-3">
                                 <div class="row">
-                                    <div class="col-6 d-flex align-items-center">
-                                    <h6 class="mb-0">Recherche : <?php echo get_search_query(); ?> trouvé dans :</h6>
+                                    <div class="col-8 d-flex align-items-center">
+                                    <h6 class="mb-0">Recherche <span style="margin-bottom:0; padding: 2px 20px;" class="btn bg-gradient-success toast-btn"><?php echo get_search_query(); ?></span> trouvé dans : <?php the_title();  ?></h6>
                                     </div>
-                                    <div class="col-6 text-end">
+                                    <div class="col-4 text-end">
                                         <a href="?p=<?php echo($post->ID) . '&id=' . $post->ID; ?>" class="btn btn-outline-primary btn-sm mb-0">Détail</a>
                                     </div>
                                 </div>
@@ -148,17 +148,19 @@
                                     <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">                    
                                         <div class="d-flex flex-column">
                                             <h3 class="mb-1 text-dark font-weight-bold text-sm"><?php the_title();  ?></h3>
-                                                <?php $nom_du_service = get_field( "nom_du_service" ); ?>
-                                                <?php $contact_de_la_direction = get_field( "contact_de_la_direction" ); ?>
-                                                <?php $email = get_field( "email" ); ?>
-                                                <?php $telephone = get_field( "telephone" ); ?>  
-                                                <?php $adresse = get_field( "adresse" ); ?>
+                                            <?php $nom_du_service = get_field( "nom_du_service" ); ?>
+                                            <?php $contact_de_la_direction = get_field( "contact_de_la_direction" ); ?>
+                                            <?php $email = get_field( "email" ); ?>
+                                            <?php $telephone = get_field( "telephone" ); ?>  
+                                            <?php $mobile = get_field( "mobile" ); ?> 
+                                            <?php $adresse = get_field( "adresse" ); ?>
 
-                                                <span class="mb-2 text-xs">Responsable du site : <?php  echo($contact_de_la_direction); ?></span>
-                                                <span class="mb-2 text-xs">Nom du service: <span class="text-dark font-weight-bold ms-sm-2"><?php  echo($nom_du_service); ?></span></span>
-                                                <span class="mb-2 text-xs">Adresse du service: <span class="text-dark font-weight-bold ms-sm-2"><?php  echo($adresse); ?></span></span>
-                                                <span class="mb-2 text-xs">Adresse email: <span class="text-dark ms-sm-2 font-weight-bold"><?php  echo($email); ?></span></span>
-                                                <span class="text-xs">Standard: <span class="text-dark ms-sm-2 font-weight-bold"><?php  echo($telephone); ?></span></span>  
+                                            <span class="mb-2 text-xs">Responsable du site : <span class="text-dark font-weight-bold ms-sm-2"><?php  echo($contact_de_la_direction); ?></span></span>
+                                            <span class="mb-2 text-xs">Nom du service: <span class="text-dark font-weight-bold ms-sm-2"><?php  echo($nom_du_service); ?></span></span>
+                                            <span class="mb-2 text-xs">Adresse du service: <span class="text-dark font-weight-bold ms-sm-2"><?php  echo($adresse); ?></span></span>
+                                            <span class="mb-2 text-xs">Adresse email: <span class="text-dark ms-sm-2 font-weight-bold"><?php  echo($email); ?></span></span>
+                                            <span class="mb-2 text-xs">Standard: <span class="text-dark ms-sm-2 font-weight-bold"><?php  echo($telephone); ?></span></span>
+                                            <span class="mb-2 text-xs">Mobile: <span class="text-dark ms-sm-2 font-weight-bold"><?php  echo($mobile); ?></span></span>    
                                         </div>
                                     </li>
                                 </ul>
