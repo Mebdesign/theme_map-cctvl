@@ -36,7 +36,7 @@
                      <span class="mb-2 text-xs">Mobile: <span class="text-dark ms-sm-2 font-weight-bold"><?php  echo($mobile); ?></span></span> 
                   </div>
                   <div class="ms-auto text-end">
-                  <?php if( current_user_can( 'edit_posts' ) ) : ?>
+                  <?php if( current_user_can('administrator')) : ?>
                     <a class="btn btn-link text-dark px-3 mb-0" href="<?php  echo(get_edit_post_link($id)) ?>"><i class="material-icons text-sm me-2">edit</i>Edit</a>
                   <?php endif ?>
                   </div>
@@ -152,7 +152,7 @@
 
                                 </td>
                                 <td class="align-middle">
-                                  <?php if( current_user_can( 'edit_posts' ) ) : ?>
+                                  <?php if( current_user_can('administrator') ) : ?>
                                     <?php echo '<a class="text-secondary font-weight-bold text-xs" href="'. get_edit_post_link($id) .'">Edit</a>'; ?>
                                   <?php endif ?>
                                 </td>
@@ -239,7 +239,7 @@
                                   <!-- <p class="text-xs text-secondary mb-0">Organization</p> -->
                                 </td>
                                 <td class="align-middle">
-                                  <?php if( current_user_can( 'edit_posts' ) ) : ?>
+                                  <?php if( current_user_can('administrator') ) : ?>
                                     <?php echo '<a class="text-secondary font-weight-bold text-xs" href="'. get_edit_post_link($id) .'">Edit</a>'; ?>
                                   <?php endif ?>
                                 </td>
@@ -343,9 +343,9 @@
                                 <span class="badge badge-sm bg-gradient-<?php echo $badge ?>"><?php echo $end_date; ?></span>
                               </td>
                               <td class="align-middle">
-                                <?php if( current_user_can( 'edit_posts' ) ) : ?>
+                                <?php if( current_user_can('administrator')  ) { ?>
                                   <?php echo '<a class="text-secondary font-weight-bold text-xs" href="'. get_edit_post_link($id) .'">Edit</a>'; ?>
-                                <?php endif ?>
+                                <?php } ?>
                               </td>
                             </tr>
                           <?php endwhile ?> 
