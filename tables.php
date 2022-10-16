@@ -305,11 +305,16 @@
 
                             if( $end_time > strtotime("+3 months", $cur_time))
                             {
+
                               $badge = 'success';
+
                             } elseif($end_time > strtotime("+2 months", $cur_time)){
+
                               $badge = 'warning';
+
                             }
                             else{
+
                               $badge = 'danger';
                             }
 
