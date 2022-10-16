@@ -44,11 +44,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
    })
 
-   //Change badge color for end of support life
-   var badge = document.querySelector('.badge')
-   if(badge) {
-    console.log('badge is present')
-   }
-
 });
 

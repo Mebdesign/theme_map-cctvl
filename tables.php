@@ -5,6 +5,7 @@
   if ( $args['id'] ) {
     $id = $args['id'];
   }
+
 ?>
 <?php if( $posts ):  ?>
   <?php foreach( $posts as $post ): ?>
@@ -278,8 +279,26 @@
                           <?php $prestataire = get_sub_field('prestataire'); ?>
                           <?php $contact = get_sub_field('contact'); ?>
                           <?php $start = get_sub_field('debut_de_contrat'); ?>
+                          <?php $start_date = date("d/m/Y", strtotime($start)); ?>
                           <?php $end = get_sub_field('fin_de_contrat'); ?>
+                          <?php $end_date = date("d/m/Y", strtotime($end)); ?>
                           <?php $lieu = get_sub_field('lieu_du_copieur'); ?>
+                          <?php 
+
+                           $end_time   =   strtotime($end);
+                           $cur_time   =   strtotime(date("Y-m-d"));
+
+                            if( $end_time > strtotime("+3 months", $cur_time))
+                            {
+                              $badge = 'success';
+                            } elseif($end_time > strtotime("+2 months", $cur_time)){
+                              $badge = 'warning';
+                            }
+                            else{
+                              $badge = 'danger';
+                            }
+
+                          ?>
                             <tr>
                               <td>
                                 <div class="d-flex px-2 py-1">
@@ -298,10 +317,10 @@
                                 <p class="text-xs text-secondary mb-0"><?php  echo($marque); ?></p>
                               </td>                                  
                               <td class="align-middle text-center text-sm">
-                                <span class="text-secondary text-xs font-weight-bold"><?php  echo($start); ?></span>
+                                <span class="text-secondary text-xs font-weight-bold"><?php  echo($start_date); ?></span>
                               </td>
                               <td class="align-middle text-center">
-                                <span class="badge badge-sm bg-gradient-success"><?php  echo($end); ?></span>
+                                <span class="badge badge-sm bg-gradient-<?php echo $badge ?>"><?php  echo $end_date; ?></span>
                               </td>
                               <td class="align-middle">
                                 <?php if( current_user_can( 'edit_posts' ) ) : ?>
