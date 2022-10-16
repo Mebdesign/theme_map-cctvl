@@ -203,6 +203,21 @@
                               <?php $prestataire = get_sub_field('prestataire'); ?>
                               <?php $nom = get_sub_field('nom'); ?>
                               <?php $fin_dengagement = get_sub_field('fin_dengagement'); ?>
+                              <?php $new_fin_dengagement = date("d/m/Y", strtotime($fin_dengagement)); ?>
+                              <?php
+                                $fin_dengagement_time   =   strtotime($fin_dengagement);
+                                $current_time   =   strtotime(date("Y-m-d"));
+
+                                if($fin_dengagement_time < $current_time)
+                                {
+                                  $badge = 'success';
+
+                                } elseif($fin_dengagement_time > $current_time){
+                                  
+                                  $badge = 'danger';
+                                }
+                            ?>
+                              
                               <tr>
                                 <td>
                                   <div class="d-flex px-2 py-1">
@@ -220,7 +235,7 @@
                                   <span class="badge badge-sm bg-gradient-success">Active</span>
                                 </td>
                                 <td class="align-middle text-center">
-                                <p class="text-xs font-weight-bold mb-0"><?php  echo($fin_dengagement); ?></p>
+                                    <span class="badge badge-sm bg-gradient-<?php echo $badge ?>"><?php  echo $new_fin_dengagement; ?></span>
                                   <!-- <p class="text-xs text-secondary mb-0">Organization</p> -->
                                 </td>
                                 <td class="align-middle">
@@ -320,7 +335,7 @@
                                 <span class="text-secondary text-xs font-weight-bold"><?php  echo($start_date); ?></span>
                               </td>
                               <td class="align-middle text-center">
-                                <span class="badge badge-sm bg-gradient-<?php echo $badge ?>"><?php  echo $end_date; ?></span>
+                                <span class="badge badge-sm bg-gradient-<?php echo $badge ?>"><?php echo $end_date; ?></span>
                               </td>
                               <td class="align-middle">
                                 <?php if( current_user_can( 'edit_posts' ) ) : ?>
