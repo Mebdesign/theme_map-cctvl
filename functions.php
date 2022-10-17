@@ -103,7 +103,7 @@ function custom_login(){
 
 // Modify ACF Form Label for Post Title Field
 function wd_post_title_acf_name( $field ) {
-    if( is_page( 'Nouvel utilisateur' ) ) { // if on the vendor page
+    if( is_page( 'Créer un nouvel utilisateur ADEFI' ) ) { // if on the vendor page
         $field['label'] = 'Titre de la demande (Prénom et Nom)';
     } else {
          $field['label'] = 'Vérifier la traduction dans le thème';
