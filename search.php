@@ -118,6 +118,11 @@
         )        
     );
 
+    $args = array( 
+        'numberposts'	=> -1,
+        'post_type' => 'documentation', 
+    );
+
     $the_query = new WP_Query( $args );
    
 ?>
@@ -131,7 +136,6 @@
             <div class="col-lg-8">
             <?php if( $the_query->have_posts() ): ?>
                 <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-                    <?php //if( $post->ID ===  $searchID ):  ?>
                         <div class="card mb-3">
                             <div class="card-header pb-0 p-3">
                                 <div class="row">
@@ -166,7 +170,6 @@
                                 </ul>
                             </div>
                         </div>
-                    <?php //endif; ?>
                 <?php endwhile; ?>
             <?php endif; ?>                
             <?php wp_reset_query(); ?>

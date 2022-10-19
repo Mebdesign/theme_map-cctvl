@@ -14,7 +14,8 @@
               <form id="searchform" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
                 <!--<label class="form-label">Recherche...</label>-->
                 <input type="text" class="search-field form-control" name="s" placeholder="Rechercher" value="" />
-                <input type="hidden" name="post_type[]" value="site" />             
+                <input type="hidden" name="post_type[]" value="site" />
+                <input type="hidden" name="post_type[]" value="documentation" />               
               </form>
             </div>
           </div>
