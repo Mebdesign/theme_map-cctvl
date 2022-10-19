@@ -10,7 +10,7 @@ Template Name: Documentation
 
     <?php get_template_part('navbar'); ?>
       <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-8">
                 <div class="card h-100">
                     <div class="card-header pb-0 p-3">
                     <div class="row">
@@ -31,7 +31,7 @@ Template Name: Documentation
                             </div>
                             <div class="d-flex align-items-center text-sm">
                                 22/09/2022
-                                <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="material-icons text-lg position-relative me-1">picture_as_pdf</i> PDF</button>
+                                <a class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="material-icons text-lg position-relative me-1">picture_as_pdf</i> PDF</a>
                             </div>
                         </li>
                     </ul>
