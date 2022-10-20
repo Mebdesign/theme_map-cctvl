@@ -25,7 +25,6 @@ $posts = get_posts(
                 <?php foreach( $posts as $post ): ?>   
                     <?php setup_postdata( $post ) ?>   
                     <?php $ressource = get_field( "ressource" ); ?>   
-
                         <?php if( have_rows('ressource') ): ?>
                             <?php while( have_rows('ressource') ) : the_row(); ?>                   
                                 <?php $doc = get_sub_field( "document" ); ?>
@@ -42,14 +41,13 @@ $posts = get_posts(
                                     <div class="card-body p-3 pb-0">
                                     <ul class="list-group">
                                         <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                                            <div class="d-flex flex-column">
+                                            <div class="d-flex flex-column" style="max-width:80%; ">
                                                 <h6 class="mb-1 text-dark font-weight-bold text-sm">                                                     
                                                     <?php  
                                                         foreach((get_the_category()) as $category) {
                                                             echo $category->cat_name . ' ';
                                                         }
                                                     ?>
-
                                                 </h6>
                                                 <span class="text-xs"> <?php echo($description); ?> </span>
                                             </div>
@@ -59,9 +57,9 @@ $posts = get_posts(
                                             </div>
                                         </li>
                                     </ul>
-                                    </div>
                                 </div>
-                            <?php endwhile ?>
+                            </div>
+                        <?php endwhile ?>
                     <?php endif ?>
                 <?php endforeach; ?>
             <?php wp_reset_postdata(); ?>
