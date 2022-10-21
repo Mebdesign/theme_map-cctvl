@@ -55,7 +55,7 @@ $posts = get_posts(
                                             </div>
                                             <div class="d-flex align-items-center text-sm">
                                                 <?php the_time('d/m/Y'); ?>
-                                                <a href="<?php echo($doc); ?>" target='_blank' class="btn btn-outline-primary btn-sm mb-0 mx-1"><i class="material-icons text-lg position-relative me-1">picture_as_pdf</i> PDF</a>
+                                                <a href="<?php echo($doc); ?>" target='_blank' class="btn btn-outline-success btn-sm mb-0 mx-1"><i class="material-icons text-lg position-relative me-1">picture_as_pdf</i> PDF</a>
                                             </div>
                                         </li>
                                     </ul>

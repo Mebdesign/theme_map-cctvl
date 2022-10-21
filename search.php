@@ -163,7 +163,7 @@
                                 <h6 class="mb-0">Recherche <span style="margin-bottom:0; padding: 2px 20px;" class="btn bg-gradient-success toast-btn"><?php echo get_search_query(); ?></span> trouvé dans : <?php the_title();  ?></h6>
                                 </div>
                                 <div class="col-4 text-end">
-                                    <a href="?p=<?php echo($post->ID) . '&id=' . $post->ID; ?>" class="btn btn-outline-primary btn-sm mb-0">Détail</a>
+                                    <a href="?p=<?php echo($post->ID) . '&id=' . $post->ID; ?>" class="btn btn-outline-success btn-sm mb-0">Détail</a>
                                 </div>
                             </div>
                         </div>
@@ -210,7 +210,7 @@
                                     <h6 class="mb-0">Recherche <span style="margin-bottom:0; padding: 2px 20px;" class="btn bg-gradient-success toast-btn"><?php echo get_search_query(); ?></span> trouvé dans : <?php the_title();  ?></h6>
                                     </div>
                                     <div class="col-4 text-end">
-                                        <a href="<?php  echo($doc); ?>" target="_blank" class="btn btn-outline-primary btn-sm mb-0">PDF</a>
+                                        <a href="<?php  echo($doc); ?>" target="_blank" class="btn btn-outline-success btn-sm mb-0">PDF</a>
                                     </div>
                                 </div>
                             </div>
