@@ -19,7 +19,7 @@
     }
     add_filter('posts_where', 'my_posts_where');
 
-    $args = array(
+    $siteargs = array(
         'numberposts'	=> -1,
         'post_type' => 'site', 
         'meta_query'    => array(
@@ -126,7 +126,12 @@
                 'key'       => 'titre_du_document',
                 'value'     => $search,
                 'compare'   => 'LIKE'
-            ),            
+            ),
+            array(
+                'key'       => 'categories',
+                'value'     => $search,
+                'compare'   => 'LIKE'
+            ),                       
             array(
                 'key'       => 'ressource_$_description',
                 'value'     => $search,
@@ -135,7 +140,7 @@
         )      
     );
 
-    $the_query = new WP_Query( $args );
+    $the_query = new WP_Query( $siteargs );
     $the_query_doc = new WP_Query( $docargs );
    
 ?>
@@ -190,14 +195,14 @@
             <?php wp_reset_query(); ?>
 
             <?php if( $the_query_doc->have_posts() ): ?>
-                
                 <?php while ( $the_query_doc->have_posts() ) : $the_query_doc->the_post(); ?>
+                    <?php $category = get_field( "categories" ); ?>
+
                     <?php if( have_rows('ressource') ): ?>
                     <?php while( have_rows('ressource') ) : the_row(); ?>
                         <?php $doc = get_sub_field( "document" ); ?>
                         <?php $description = get_sub_field( "description" ); ?>
-                        <?php $cat = get_sub_field( "categorie" ); ?>
-
+                        
                         <div class="card mb-3">
                             <div class="card-header pb-0 p-3">
                                 <div class="row">
@@ -214,16 +219,14 @@
                                     <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">                    
                                         <div class="d-flex flex-column">
                                             <h3 class="mb-1 text-dark font-weight-bold text-sm"><?php the_title();?></h3>
-                                            <?php $doc = get_sub_field( "document" ); ?>
-                                            <?php $description = get_sub_field( "description" ); ?>
-                                            <?php $cat = get_sub_field( "categorie" ); ?>
-                                            <span class="mb-2 text-xs">Description: <span class="text-dark font-weight-bold ms-sm-2"><?php  echo($description); ?></span></span>
-                                            <span class="mb-2 text-xs">Catégorie: <span class="text-dark font-weight-bold ms-sm-2">
+                                            <span class="mb-2 text-xs font-weight-bold">Description: <span class="text-dark ms-sm-2"><?php echo($description); ?></span></span>
+                                            <span class="mb-2 text-xs font-weight-bold">Catégorie: <span class="text-dark ms-sm-2">
                                                 <?php   
-                                                    foreach((get_the_category()) as $category) {
-                                                        echo $category->cat_name . ' ';
-                                                    } 
-                                                ?>
+                                                    if( $category ): ?> 
+                                                        <?php foreach( $category as $cat ): ?>
+                                                            <?php echo esc_html( $cat->name ); ?>
+                                                        <?php endforeach; ?>
+                                                    <?php endif; ?>
                                             </span></span>   
                                         </div>
                                     </li>

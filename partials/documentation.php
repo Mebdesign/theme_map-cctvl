@@ -29,7 +29,7 @@ $posts = get_posts(
                             <?php while( have_rows('ressource') ) : the_row(); ?>                   
                                 <?php $doc = get_sub_field( "document" ); ?>
                                 <?php $description = get_sub_field( "description" ); ?>
-                                <?php $cat = get_sub_field( "categorie" ); ?>
+                                <?php $category = get_field( "categories" ); ?>
                                 <div class="card mb-3">
                                     <div class="card-header pb-0 p-3">
                                     <div class="row">
@@ -43,11 +43,13 @@ $posts = get_posts(
                                         <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                                             <div class="d-flex flex-column" style="max-width:80%; ">
                                                 <h6 class="mb-1 text-dark font-weight-bold text-sm">                                                     
-                                                    <?php  
-                                                        foreach((get_the_category()) as $category) {
-                                                            echo $category->cat_name . ' ';
-                                                        }
-                                                    ?>
+                                                <?php   
+                                                    if( $category ): ?> 
+                                                        <?php foreach( $category as $cat ): ?>
+                                                            <?php echo( $cat->name ) ; ?>
+                                                        <?php endforeach; ?>
+
+                                                    <?php endif; ?>
                                                 </h6>
                                                 <span class="text-xs"> <?php echo($description); ?> </span>
                                             </div>
