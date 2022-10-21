@@ -88,6 +88,7 @@ function mb_login_title() { return get_option( 'blogname' ); }
 add_filter( 'login_headertitle', 'mb_login_title' );
 
 // Redirect default URL link to a custom page
+/*
 add_action('init','custom_login');
 function custom_login(){
     global $pagenow;
@@ -100,6 +101,7 @@ function custom_login(){
         exit();
     }
 }
+*/
 
 // Modify ACF Form Label for Post Title Field
 function wd_post_title_acf_name( $field ) {
