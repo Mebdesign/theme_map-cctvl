@@ -6,6 +6,7 @@
 
 <?php 
     $search = get_search_query();    
+
     // filter
     function my_posts_where( $where  ) {
         $where = str_replace("meta_key = 'localisation_$", "meta_key LIKE 'localisation_%", $where );
@@ -17,9 +18,6 @@
         return $where ;
     }
     add_filter('posts_where', 'my_posts_where');
-    // vars
-    $nom_du_site = $search;
-
 
     $args = array(
         'numberposts'	=> -1,
@@ -121,9 +119,14 @@
 
     $docargs = array(
         'numberposts'	=> -1,
-        'post_type' => 'documentation', 
+        'post_type' => 'documentation',
         'meta_query'    => array(
             'relation'      => 'OR',
+            array(
+                'key'       => 'titre_du_document',
+                'value'     => $search,
+                'compare'   => 'LIKE'
+            ),            
             array(
                 'key'       => 'ressource_$_description',
                 'value'     => $search,
@@ -210,7 +213,7 @@
                                 <ul class="list-group">
                                     <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">                    
                                         <div class="d-flex flex-column">
-                                            <h3 class="mb-1 text-dark font-weight-bold text-sm"><?php the_title();  ?></h3>
+                                            <h3 class="mb-1 text-dark font-weight-bold text-sm"><?php the_title();?></h3>
                                             <?php $doc = get_sub_field( "document" ); ?>
                                             <?php $description = get_sub_field( "description" ); ?>
                                             <?php $cat = get_sub_field( "categorie" ); ?>
@@ -220,7 +223,7 @@
                                                     foreach((get_the_category()) as $category) {
                                                         echo $category->cat_name . ' ';
                                                     } 
-                                                    ?>
+                                                ?>
                                             </span></span>   
                                         </div>
                                     </li>
