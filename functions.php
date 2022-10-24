@@ -62,6 +62,24 @@ add_action('init', 'disable_admin_bar_for_subscribers', 9);
 
 function my_login_logo() { ?>
     <style type="text/css">
+        body{
+            background-image: url('https://www.ccterresduvaldeloire.fr/medias/2019/05/default1-e1565095518289.jpg') !important;
+            background-size: cover !important;
+            background-repeat: no-repeat !important;
+        }
+        
+        .login #nav a, 
+        .login #nav a:hover, 
+        .login #backtoblog a {
+            color: #ffffff !important;
+            font-size: 20px !important;
+            text-shadow: 5px 5px 5px #000000 !important;
+        }
+        
+        .dashicons-translation:before {
+            color: #ffffff !important;
+        }
+
         #login h1 a, .login h1 a {
             background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/assets/img/logos/Logo-CCTVL-84.png) !important;
         }
