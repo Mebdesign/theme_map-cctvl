@@ -111,9 +111,9 @@
                     <table class="table align-items-center mb-0">
                       <thead>
                         <tr>
-                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Prestataire</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Prestataire / Nom du site</th>
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Numéros</th>
-                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Statuts</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Internet</th>
                           <th class="text-secondary opacity-7"></th>
                         </tr>
@@ -126,21 +126,43 @@
                               <?php $internet = get_sub_field('internet'); ?>
                               <?php $contact = get_sub_field('contact'); ?>
                               <?php $nom = get_sub_field('nom'); ?>
+                              <?php $status = get_sub_field('status'); ?>
+                              
                               <tr>
                                 <td>
                                   <div class="d-flex px-2 py-1">
                                     <div class="d-flex flex-column justify-content-center">
                                       <h6 class="mb-0 text-sm"><?php  echo($prestataires); ?></h6>
-                                      <p class="text-xs text-secondary mb-0"><?php echo($contact); ?></p>
+                                      <p class="text-xs text-secondary mb-0"><?php echo($nom);  ?></p>
                                     </div>
                                   </div>
                                 </td>
                                 <td>
                                   <p class="text-xs font-weight-bold mb-0"><?php  echo($fixes); ?></p>
-                                  <p class="text-xs text-secondary mb-0"><?php  echo($nom); ?></p>
+                                  <p class="text-xs text-secondary mb-0"><?php echo($contact); ?></p>
                                 </td>
-                                <td class="align-middle text-center text-sm">
-                                  <span class="badge badge-sm bg-gradient-success">Active</span>
+                                <td class="align-middle text-center text-sm">                                  
+                                  <?php if( $status ): ?> 
+                                    <?php foreach( $status as $stat ): ?>
+                                      <?php 
+                                            echo $stats;
+                                            switch ($stat) {
+                                              case 'Active':
+                                                  echo '<span class="badge badge-sm bg-gradient-success">Active</span>';
+                                                  break;
+                                              case 'En Résil.':
+                                                echo '<span class="badge badge-sm bg-gradient-warning">En résil.</span>';
+                                                  break;
+                                              case 'En Porta.':
+                                                echo '<span class="badge badge-sm bg-gradient-warning">En porta.</span>';
+                                                  break;
+                                              case 'Résiliée':
+                                                echo '<span class="badge badge-sm bg-gradient-danger">Résiliée</span>';
+                                                  break;                                                  
+                                            }                                      
+                                      ?>
+                                      <?php endforeach; ?>
+                                  <?php endif ?>
                                 </td>
                                 <td class="align-middle text-center">
                                   <?php $internet = get_sub_field('internet'); ?>
@@ -232,7 +254,27 @@
                                   <p class="text-xs text-secondary mb-0"><?php  echo($nom); ?></p>
                                 </td>
                                 <td class="align-middle text-center text-sm">
-                                  <span class="badge badge-sm bg-gradient-success">Active</span>
+                                <?php if( $status ): ?> 
+                                    <?php foreach( $status as $stat ): ?>
+                                      <?php 
+                                            echo $stats;
+                                            switch ($stat) {
+                                              case 'Active':
+                                                  echo '<span class="badge badge-sm bg-gradient-success">Active</span>';
+                                                  break;
+                                              case 'En Résil.':
+                                                echo '<span class="badge badge-sm bg-gradient-warning">En résil.</span>';
+                                                  break;
+                                              case 'En Porta.':
+                                                echo '<span class="badge badge-sm bg-gradient-warning">En porta.</span>';
+                                                  break;
+                                              case 'Résiliée':
+                                                echo '<span class="badge badge-sm bg-gradient-danger">Résiliée</span>';
+                                                  break;                                                  
+                                            }                                      
+                                      ?>
+                                      <?php endforeach; ?>
+                                  <?php endif ?>
                                 </td>
                                 <td class="align-middle text-center">
                                     <span class="badge badge-sm bg-gradient-<?php echo $badge ?>"><?php  echo $new_fin_dengagement; ?></span>
