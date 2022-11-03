@@ -133,3 +133,23 @@ function wd_post_title_acf_name( $field ) {
 add_filter('acf/load_field/name=_post_title', 'wd_post_title_acf_name');
 
 
+function dashboard_datas_sites() {
+    
+    $posts = get_posts( 
+        array(
+        'posts_per_page'	=> -1,
+        'post_type' => 'site')
+    ); 
+
+    if( have_rows('copieurs_et_impressions') ):
+        echo('ok');
+        while ( have_rows('copieurs_et_impressions') ) : the_row();
+            $materiel = get_sub_field('materiel');
+            echo($materiel);
+        endwhile;
+    else :
+        echo('No loop');
+    endif;    
+
+}
+
