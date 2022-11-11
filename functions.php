@@ -1,7 +1,7 @@
-<?php 
+<?php
 
 add_action('wp_enqueue_scripts', 'theme_styles');
-function theme_styles() { 
+function theme_styles() {
 	// Load all of the styles that need to appear on all pages
     wp_enqueue_style( 'google-fonts', "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" );
 	wp_enqueue_style( 'nucleo-icons', get_template_directory_uri() . '/assets/css/nucleo-icons.css' );
@@ -37,10 +37,10 @@ function register_my_menus() {
 
 
 /* Add custom classes to list item "li" */
-function _namespace_menu_item_class( $classes, $item ) {       
+function _namespace_menu_item_class( $classes, $item ) {
     $classes[] = "nav-item"; // you can add multiple classes here
     return $classes;
-} 
+}
 add_filter( 'nav_menu_css_class' , '_namespace_menu_item_class' , 10, 2 );
 
 /* Add custom class to link in menu */
@@ -67,15 +67,15 @@ function my_login_logo() { ?>
             background-size: cover !important;
             background-repeat: no-repeat !important;
         }
-        
-        .login #nav a, 
-        .login #nav a:hover, 
+
+        .login #nav a,
+        .login #nav a:hover,
         .login #backtoblog a {
             color: #ffffff !important;
             font-size: 20px !important;
             text-shadow: 5px 5px 5px #000000 !important;
         }
-        
+
         .dashicons-translation:before {
             color: #ffffff !important;
         }
@@ -85,7 +85,7 @@ function my_login_logo() { ?>
         }
     </style>
 <?php }
-add_action( 'login_enqueue_scripts', 'my_login_logo' ); 
+add_action( 'login_enqueue_scripts', 'my_login_logo' );
 
 function disable_check_icon_login_page() { ?>
     <style type="text/css">
@@ -95,7 +95,7 @@ function disable_check_icon_login_page() { ?>
     }
     </style>
 <?php }
-add_action( 'login_enqueue_scripts', 'disable_check_icon_login_page' ); 
+add_action( 'login_enqueue_scripts', 'disable_check_icon_login_page' );
 
 // changing the logo link from wordpress.org to your site
 function mb_login_url() {  return home_url(); }
@@ -133,23 +133,5 @@ function wd_post_title_acf_name( $field ) {
 add_filter('acf/load_field/name=_post_title', 'wd_post_title_acf_name');
 
 
-function dashboard_datas_sites() {
-    
-    $posts = get_posts( 
-        array(
-        'posts_per_page'	=> -1,
-        'post_type' => 'site')
-    ); 
 
-    if( have_rows('copieurs_et_impressions') ):
-        echo('ok');
-        while ( have_rows('copieurs_et_impressions') ) : the_row();
-            $materiel = get_sub_field('materiel');
-            echo($materiel);
-        endwhile;
-    else :
-        echo('No loop');
-    endif;    
-
-}
 
