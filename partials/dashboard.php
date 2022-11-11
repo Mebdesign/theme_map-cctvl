@@ -33,7 +33,6 @@ if( $posts ):
           echo('No copieurs, ');
       endif;
 
-
       if( have_rows('tel_mobiles') ):
         while ( have_rows('tel_mobiles') ) : the_row();
             $materiel = array_push($mobiles, get_sub_field('lignes_mobiles'));
