@@ -14,6 +14,7 @@ $internet = array();
 $phones = array();
 $mobiles = array();
 $engaged_line = array();
+$line_in_transfer = array();
 
 if( $posts ):
   foreach( $posts as $post ):
@@ -37,9 +38,11 @@ if( $posts ):
             $new_fin_dengagement = date("d/m/Y", strtotime($fin_dengagement));
             $fin_dengagement_time   =   strtotime($fin_dengagement);
             $current_time   =   strtotime(date("Y-m-d"));
+            $status = get_sub_field('status');
               if($fin_dengagement_time > $current_time) :
                 array_push($engaged_line, get_sub_field('lignes_mobiles'));
               endif;
+              echo($status);
         endwhile;
       endif;
 
@@ -191,7 +194,7 @@ endif;
                                             <i class="material-icons text-danger text-gradient me-3">smartphone</i>
                                           </div>
                                           <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="mb-0 text-sm"><?php echo($nom); ?></h6>
+                                            <h6 class="mb-0 text-sm text-uppercase"><?php echo($nom); ?></h6>
                                           </div>
                                         </div>
                                       </td>
@@ -219,7 +222,7 @@ endif;
         <div class="col-lg-4 col-md-6">
           <div class="card h-100">
             <div class="card-header pb-0">
-              <h6>Orders overview</h6>
+              <h6>Lignes mobiles en cours de portabilité</h6>
               <p class="text-sm">
                 <i class="fa fa-arrow-up text-success" aria-hidden="true"></i>
                 <span class="font-weight-bold">24%</span> this month

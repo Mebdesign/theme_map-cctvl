@@ -1,6 +1,6 @@
 <?php $posts = get_posts( array(
   'posts_per_page'	=> -1,
-  'post_type' => 'site')); 
+  'post_type' => 'site'));
 
   if ( $args['id'] ) {
     $id = $args['id'];
@@ -16,7 +16,7 @@
       <?php $email = get_field( "email" ); ?>
       <?php $telephone = get_field( "telephone" ); ?>
       <?php $adresse = get_field( "adresse" ); ?>
-      <?php $mobile = get_field( "mobile" ); ?> 
+      <?php $mobile = get_field( "mobile" ); ?>
 
       <div class="row mb-4">
         <div class="col-md-7 mt-4">
@@ -33,7 +33,7 @@
                     <span class="mb-2 text-xs">Adresse du service: <span class="text-dark font-weight-bold ms-sm-2"><?php  echo($adresse); ?></span></span>
                     <span class="mb-2 text-xs">Adresse email: <span class="text-dark ms-sm-2 font-weight-bold"><?php  echo($email); ?></span></span>
                     <span class="mb-2 text-xs">Standard: <span class="text-dark ms-sm-2 font-weight-bold"><?php  echo($telephone); ?></span></span>
-                     <span class="mb-2 text-xs">Mobile: <span class="text-dark ms-sm-2 font-weight-bold"><?php  echo($mobile); ?></span></span> 
+                     <span class="mb-2 text-xs">Mobile: <span class="text-dark ms-sm-2 font-weight-bold"><?php  echo($mobile); ?></span></span>
                   </div>
                   <div class="ms-auto text-end">
                   <?php if( current_user_can('administrator')) : ?>
@@ -45,7 +45,7 @@
             </div>
           </div>
         </div>
-        
+
         <div class="col-md-5 mt-4">
           <div class="card h-100 mb-4">
             <div class="card-header pb-0 px-3">
@@ -89,22 +89,22 @@
             </div>
             -->
           </div>
-        </div> 
+        </div>
       </div>
-      
+
       <?php  $telephones_fixes = get_field( "tel_fixes" ); ?>
         <div class="row"> <!-- start Télephones fixes -->
             <div class="col-12">
               <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                  <div class="bg-gradient-custom-brown shadow-custom-brown border-radius-lg pt-4 pb-3 d-flex justify-content-between">                   
+                  <div class="bg-gradient-custom-brown shadow-custom-brown border-radius-lg pt-4 pb-3 d-flex justify-content-between">
                     <div class="d-flex align-items-center">
                       <h6 class="text-white ps-3">Téléphonie fixe - <?php the_title(); ?> </h6>
-                    </div>             
+                    </div>
                     <div class="form-check form-switch d-flex align-items-center pe-3">
                         <input class="form-check-input ms-auto flexSwitchCheckDefault" type="checkbox" >
-                    </div>                     
-                  </div>                  
+                    </div>
+                  </div>
                 </div>
                 <div class="card-body card-body-toggled px-0 pb-2">
                   <div class="table-responsive p-0">
@@ -127,7 +127,7 @@
                               <?php $contact = get_sub_field('contact'); ?>
                               <?php $nom = get_sub_field('nom'); ?>
                               <?php $status = get_sub_field('status'); ?>
-                              
+
                               <tr>
                                 <td>
                                   <div class="d-flex px-2 py-1">
@@ -141,11 +141,10 @@
                                   <p class="text-xs font-weight-bold mb-0"><?php  echo($fixes); ?></p>
                                   <p class="text-xs text-secondary mb-0"><?php echo($contact); ?></p>
                                 </td>
-                                <td class="align-middle text-center text-sm">                                  
-                                  <?php if( $status ): ?> 
+                                <td class="align-middle text-center text-sm">
+                                  <?php if( $status ): ?>
                                     <?php foreach( $status as $stat ): ?>
-                                      <?php 
-                                            echo $stats;
+                                      <?php
                                             switch ($stat) {
                                               case 'Active':
                                                   echo '<span class="badge badge-sm bg-gradient-success">Active</span>';
@@ -158,15 +157,15 @@
                                                   break;
                                               case 'Résiliée':
                                                 echo '<span class="badge badge-sm bg-gradient-danger">Résiliée</span>';
-                                                  break;                                                  
-                                            }                                      
+                                                  break;
+                                            }
                                       ?>
                                       <?php endforeach; ?>
                                   <?php endif ?>
                                 </td>
                                 <td class="align-middle text-center">
                                   <?php $internet = get_sub_field('internet'); ?>
-                                  <?php if( $internet ): ?> 
+                                  <?php if( $internet ): ?>
                                     <?php foreach( $internet as $checked ): ?>
                                       <span class="text-secondary text-xs font-weight-bold"><?php  echo($checked); ?></span>
                                     <?php endforeach; ?>
@@ -183,7 +182,7 @@
                               <?php else : ?>
                                 <td class="align-middle">
                                   <p class="text-xs text-secondary mb-0"><?php echo("Pas d'informations renseignées en base de données") ?></p>
-                                </td>                                   
+                                </td>
                           <?php endif ?>
                       </tbody>
                     </table>
@@ -192,19 +191,19 @@
               </div>
             </div>
         </div> <!-- end Télephones fixes -->
-        
+
         <div class="row"> <!-- start mobiles -->
             <div class="col-12">
               <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                  <div class="bg-gradient-custom-brown shadow-custom-brown border-radius-lg pt-4 pb-3 d-flex justify-content-between">                   
+                  <div class="bg-gradient-custom-brown shadow-custom-brown border-radius-lg pt-4 pb-3 d-flex justify-content-between">
                     <div class="d-flex align-items-center">
                     <h6 class="text-white ps-3">Téléphonie Mobile- <?php the_title(); ?></h6>
-                    </div>             
+                    </div>
                     <div class="form-check form-switch d-flex align-items-center pe-3">
                         <input class="form-check-input ms-auto flexSwitchCheckDefault" type="checkbox" >
-                    </div>                     
-                  </div>                  
+                    </div>
+                  </div>
                 </div>
                 <div class="card-body card-body-toggled  px-0 pb-2">
                   <div class="table-responsive p-0">
@@ -226,6 +225,8 @@
                               <?php $nom = get_sub_field('nom'); ?>
                               <?php $fin_dengagement = get_sub_field('fin_dengagement'); ?>
                               <?php $new_fin_dengagement = date("d/m/Y", strtotime($fin_dengagement)); ?>
+                              <?php $status = get_sub_field('status'); ?>
+
                               <?php
                                 $fin_dengagement_time   =   strtotime($fin_dengagement);
                                 $current_time   =   strtotime(date("Y-m-d"));
@@ -235,11 +236,11 @@
                                   $badge = 'success';
 
                                 } elseif($fin_dengagement_time > $current_time){
-                                  
+
                                   $badge = 'danger';
                                 }
                             ?>
-                              
+
                               <tr>
                                 <td>
                                   <div class="d-flex px-2 py-1">
@@ -254,27 +255,25 @@
                                   <p class="text-xs text-secondary mb-0"><?php  echo($nom); ?></p>
                                 </td>
                                 <td class="align-middle text-center text-sm">
-                                <?php if( $status ): ?> 
-                                    <?php foreach( $status as $stat ): ?>
-                                      <?php 
-                                            echo $stats;
-                                            switch ($stat) {
-                                              case 'Active':
-                                                  echo '<span class="badge badge-sm bg-gradient-success">Active</span>';
-                                                  break;
-                                              case 'En Résil.':
-                                                echo '<span class="badge badge-sm bg-gradient-warning">En résil.</span>';
-                                                  break;
-                                              case 'En Porta.':
-                                                echo '<span class="badge badge-sm bg-gradient-warning">En porta.</span>';
-                                                  break;
-                                              case 'Résiliée':
-                                                echo '<span class="badge badge-sm bg-gradient-danger">Résiliée</span>';
-                                                  break;                                                  
-                                            }                                      
-                                      ?>
-                                      <?php endforeach; ?>
-                                  <?php endif ?>
+                                  <?php if( $status ):
+
+                                    foreach( $status as $stat ):
+                                        switch ($stat) {
+                                          case 'Active':
+                                              echo '<span class="badge badge-sm bg-gradient-success">Active</span>';
+                                              break;
+                                          case 'En Résil.':
+                                            echo '<span class="badge badge-sm bg-gradient-warning">En résil.</span>';
+                                              break;
+                                          case 'En Porta.':
+                                            echo '<span class="badge badge-sm bg-gradient-warning">En cours de portabilité</span>';
+                                              break;
+                                          case 'Résiliée':
+                                            echo '<span class="badge badge-sm bg-gradient-danger">Résiliée</span>';
+                                              break;
+                                        }
+                                      endforeach;
+                                  endif ?>
                                 </td>
                                 <td class="align-middle text-center">
                                     <span class="badge badge-sm bg-gradient-<?php echo $badge ?>"><?php  echo $new_fin_dengagement; ?></span>
@@ -290,29 +289,29 @@
                               <?php else : ?>
                                 <td class="align-middle">
                                   <p class="text-xs text-secondary mb-0"><?php echo("Pas d'informations renseignées en base de données") ?></p>
-                                </td>   
+                                </td>
                           <?php endif ?>
                       </tbody>
                     </table>
                   </div>
                 </div>
-                
+
               </div>
             </div>
         </div> <!-- end mobiles -->
-        
-                                       
+
+
         <div class="row"> <!-- start printers -->
             <div class="col-12">
               <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                  <div class="bg-gradient-custom-brown shadow-custom-brown border-radius-lg pt-4 pb-3 d-flex justify-content-between">                   
+                  <div class="bg-gradient-custom-brown shadow-custom-brown border-radius-lg pt-4 pb-3 d-flex justify-content-between">
                     <div class="d-flex align-items-center">
                         <h6 class="text-white ps-3">Copieurs & impressions - <?php the_title(); ?></h6>
-                    </div>             
+                    </div>
                     <div class="form-check form-switch d-flex align-items-center pe-3">
                         <input class="form-check-input ms-auto flexSwitchCheckDefault" type="checkbox">
-                    </div>                     
+                    </div>
                   </div>
                 </div>
                 <div class="card-body card-body-toggled px-0 pb-2">
@@ -329,7 +328,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                      <?php if( have_rows('copieurs_et_impressions') ): ?>        
+                      <?php if( have_rows('copieurs_et_impressions') ): ?>
                           <?php while( have_rows('copieurs_et_impressions') ) : the_row(); ?>
                           <?php $materiel = get_sub_field('materiel'); ?>
                           <?php $marque = get_sub_field('marque'); ?>
@@ -340,7 +339,7 @@
                           <?php $end = get_sub_field('fin_de_contrat'); ?>
                           <?php $end_date = date("d/m/Y", strtotime($end)); ?>
                           <?php $lieu = get_sub_field('lieu_du_copieur'); ?>
-                          <?php 
+                          <?php
 
                            $end_time   =   strtotime($end);
                            $cur_time   =   strtotime(date("Y-m-d"));
@@ -377,7 +376,7 @@
                               <td>
                                 <p class="text-xs font-weight-bold mb-0"><?php  echo($lieu); ?></p>
                                 <p class="text-xs text-secondary mb-0"><?php  echo($marque); ?></p>
-                              </td>                                  
+                              </td>
                               <td class="align-middle text-center text-sm">
                                 <span class="text-secondary text-xs font-weight-bold"><?php  echo($start_date); ?></span>
                               </td>
@@ -390,12 +389,12 @@
                                 <?php } ?>
                               </td>
                             </tr>
-                          <?php endwhile ?> 
+                          <?php endwhile ?>
                           <?php else : ?>
                               <td class="align-middle">
                                 <p class="text-xs text-secondary mb-0"><?php echo("Pas d'informations renseignées en base de données") ?></p>
-                              </td> 
-                          <?php endif ?>            
+                              </td>
+                          <?php endif ?>
                       </tbody>
                     </table>
                   </div>
@@ -403,7 +402,7 @@
               </div>
             </div>
         </div> <!-- end printers -->
-          
+
         <?php endif; ?>
       <?php endforeach; ?>
   <?php wp_reset_postdata(); ?>
