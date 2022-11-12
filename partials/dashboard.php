@@ -39,10 +39,16 @@ if( $posts ):
             $fin_dengagement_time   =   strtotime($fin_dengagement);
             $current_time   =   strtotime(date("Y-m-d"));
             $status = get_sub_field('status');
-              if($fin_dengagement_time > $current_time) :
-                array_push($engaged_line, get_sub_field('lignes_mobiles'));
-              endif;
-              echo($status);
+
+            if($fin_dengagement_time > $current_time) :
+              array_push($engaged_line, get_sub_field('lignes_mobiles'));
+            endif;
+            foreach( $status as $stat ):
+              if( $stat == 'En Porta.' ):
+                array_push($line_in_transfer, get_sub_field('lignes_mobiles'));
+              endif ;
+            endforeach;
+
         endwhile;
       endif;
 
@@ -224,72 +230,51 @@ endif;
             <div class="card-header pb-0">
               <h6>Lignes mobiles en cours de portabilité</h6>
               <p class="text-sm">
-                <i class="fa fa-arrow-up text-success" aria-hidden="true"></i>
-                <span class="font-weight-bold">24%</span> this month
+                <i class="fa fa-mobile text-success" aria-hidden="true"></i>
+                <span class="font-weight-bold"><?php echo count($line_in_transfer); ?></span> lignes en cours...
               </p>
             </div>
             <div class="card-body p-3">
+              <?php
+              ?>
               <div class="timeline timeline-one-side">
-                <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="material-icons text-success text-gradient">notifications</i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">$2400, Design changes</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">22 DEC 7:20 PM</p>
-                  </div>
-                </div>
-                <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="material-icons text-danger text-gradient">code</i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">New order #1832412</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">21 DEC 11 PM</p>
-                  </div>
-                </div>
-                <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="material-icons text-info text-gradient">shopping_cart</i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">Server payments for April</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">21 DEC 9:34 PM</p>
-                  </div>
-                </div>
-                <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="material-icons text-warning text-gradient">credit_card</i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">New card added for order #4395133</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">20 DEC 2:20 AM</p>
-                  </div>
-                </div>
-                <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="material-icons text-primary text-gradient">key</i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">Unlock packages for development</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">18 DEC 4:54 AM</p>
-                  </div>
-                </div>
-                <div class="timeline-block">
-                  <span class="timeline-step">
-                    <i class="material-icons text-dark text-gradient">payments</i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">New order #9583120</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">17 DEC</p>
-                  </div>
-                </div>
+                <?php
+                if( $posts ):
+                  foreach( $posts as $post ):
+                      setup_postdata( $post );
+                      if( have_rows('tel_mobiles') ):
+                        while ( have_rows('tel_mobiles') ) : the_row();
+                        $status = get_sub_field('status');
+                        $nom = get_sub_field('nom');
+                        $transfet_date = get_sub_field('date_de_portabilite');
+                        $formatted_transfer_date = date("d/m/Y", strtotime($transfet_date));
+                        foreach( $status as $stat ):
+                          if( $stat == 'En Porta.' ): ?>
+                          <div class="timeline timeline-one-side">
+                            <div class="timeline-block mb-3">
+                              <span class="timeline-step">
+                                <i class="material-icons text-warning text-gradient">sync</i>
+                              </span>
+                              <div class="timeline-content">
+                                <h6 class="text-dark text-sm font-weight-bold mb-0"><?php echo($stat); ?>, <?php echo($nom); ?></h6>
+                                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0"><?php echo($formatted_transfer_date); ?></p>
+                              </div>
+                            </div>
+                          </div>
+                            <?php
+                          endif ;
+                        endforeach;
+                        endwhile;
+                      endif;
+                  endforeach;
+                  wp_reset_postdata();
+                endif;
+                ?>
               </div>
             </div>
           </div>
         </div>
       </div>
-
 
       <?php get_footer() ?>
 
