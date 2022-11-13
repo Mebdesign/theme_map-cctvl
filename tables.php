@@ -115,19 +115,33 @@
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Numéros</th>
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Internet</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fin d'engagement</th>
                           <th class="text-secondary opacity-7"></th>
                         </tr>
                       </thead>
                       <tbody>
-                          <?php if( have_rows('tel_fixes') ): ?>
-                            <?php while( have_rows('tel_fixes') ) : the_row(); ?>
-                              <?php $fixes = get_sub_field('telephones_fixes'); ?>
-                              <?php $prestataires = get_sub_field('prestataires'); ?>
-                              <?php $internet = get_sub_field('internet'); ?>
-                              <?php $contact = get_sub_field('contact'); ?>
-                              <?php $nom = get_sub_field('nom'); ?>
-                              <?php $status = get_sub_field('status'); ?>
+                          <?php if( have_rows('tel_fixes') ):
+                            while( have_rows('tel_fixes') ) : the_row();
+                              $fixes                = get_sub_field('telephones_fixes');
+                              $prestataires         = get_sub_field('prestataires');
+                              $internet             = get_sub_field('internet');
+                              $contact              = get_sub_field('contact');
+                              $nom                  = get_sub_field('nom');
+                              $status               = get_sub_field('status');
+                              $fin_dengagement      = get_sub_field('fin_dengagement');
+                              $new_fin_dengagement  = date("d/m/Y", strtotime($fin_dengagement));
+                              $fin_dengagement_time = strtotime($fin_dengagement);
+                              $current_time         = strtotime(date("Y-m-d"));
+                              if($fin_dengagement_time < $current_time)
+                              {
+                                $badge = 'success';
 
+                              } elseif($fin_dengagement_time > $current_time){
+
+                                $badge = 'danger';
+                              }
+
+                              ?>
                               <tr>
                                 <td>
                                   <div class="d-flex px-2 py-1">
@@ -170,7 +184,9 @@
                                       <span class="text-secondary text-xs font-weight-bold"><?php  echo($checked); ?></span>
                                     <?php endforeach; ?>
                                   <?php endif ?>
-
+                                </td>
+                                <td class="align-middle text-center">
+                                    <span class="badge badge-sm bg-gradient-<?php echo $badge;?>"><?php  echo($new_fin_dengagement); ?></span>
                                 </td>
                                 <td class="align-middle">
                                   <?php if( current_user_can('administrator') ) : ?>
