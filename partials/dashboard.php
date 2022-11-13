@@ -62,17 +62,18 @@ if( $posts ):
       if( have_rows('tel_fixes') ):
         while ( have_rows('tel_fixes') ) : the_row();
             array_push($phones, get_sub_field('telephones_fixes'));
+            $fin_dengagement = get_sub_field('fin_dengagement');
             $new_fin_dengagement = date("d/m/Y", strtotime($fin_dengagement));
             $fin_dengagement_time   =   strtotime($fin_dengagement);
             $current_time   =   strtotime(date("Y-m-d"));
             $status = get_sub_field('status');
 
             if($fin_dengagement_time > $current_time) :
-              array_push($engaged_line_fixes, get_sub_field('lignes_fixes'));
+              array_push($engaged_line_fixes, get_sub_field('telephones_fixes'));
             endif;
             foreach( $status as $stat ):
               if( $stat == 'En Porta.' ):
-                array_push($line_in_transfer_fixes, get_sub_field('lignes_fixes'));
+                array_push($line_in_transfer_fixes, get_sub_field('telephones_fixes'));
               endif ;
             endforeach;
         endwhile;
@@ -317,7 +318,7 @@ endif;
                   <h6>Lignes fixes en cours d'engagement</h6>
                   <p class="text-sm mb-0">
                     <i class="fa fa-check text-info" aria-hidden="true"></i>
-                    <span class="font-weight-bold ms-1"><?php echo count($phones); ?> lignes</span> au total
+                    <span class="font-weight-bold ms-1"><?php echo count($engaged_line_fixes); ?> lignes</span> au total
                   </p>
                 </div>
                 <div class="col-lg-6 col-5 my-auto text-end">
@@ -351,15 +352,14 @@ endif;
                             setup_postdata( $post );
                             if( have_rows('tel_fixes') ):
                               while ( have_rows('tel_fixes') ) : the_row();
-                              $fixes = get_sub_field('telephones_fixes');
-                              $prestataire = get_sub_field('prestataire');
-                              $contact = get_sub_field('contact');
-                              $fin_dengagement = get_sub_field('fin_dengagement');
-                              $new_fin_dengagement = date("d/m/Y", strtotime($fin_dengagement));
-                              $fin_dengagement_time   =   strtotime($fin_dengagement);
-                              $current_time   =   strtotime(date("Y-m-d"));
+                              $fixes                = get_sub_field('telephones_fixes');
+                              $prestataire          = get_sub_field('prestataire');
+                              $contact              = get_sub_field('contact');
+                              $fin_dengagement      = get_sub_field('fin_dengagement');
+                              $new_fin_dengagement  = date("d/m/Y", strtotime($fin_dengagement));
+                              $fin_dengagement_time = strtotime($fin_dengagement);
+                              $current_time         = strtotime(date("Y-m-d"));
                                 if($fin_dengagement_time > $current_time) :
-                                  array_push($engaged_line_fixes, get_sub_field('lignes_fixes'));
                                   ?>
                                     <tr>
                                       <td>
