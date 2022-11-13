@@ -257,7 +257,7 @@ endif;
               <h6>Lignes mobiles en cours de portabilité</h6>
               <p class="text-sm">
                 <i class="fa fa-mobile text-success" aria-hidden="true"></i>
-                <span class="font-weight-bold"><?php echo count($line_in_transfer); ?></span> lignes en cours...
+                <span class="font-weight-bold"><?php echo count($line_in_transfer); ?></span> lignes en cours de transfert...
               </p>
             </div>
             <div class="card-body p-3">
@@ -284,12 +284,26 @@ endif;
                               </span>
                               <div class="timeline-content">
                                 <h6 class="text-dark text-sm font-weight-bold mb-0">En cours de transfert, <?php echo($nom); ?></h6>
-                                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0"><?php echo($formatted_transfer_date); ?> - <?php echo $mobile; ?></p>
+                                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Prévu le : <?php echo($formatted_transfer_date); ?> - <?php echo $mobile; ?></p>
                               </div>
                             </div>
                           </div>
                             <?php
                           endif ;
+                          if( $stat == 'En Résil.' ): ?>
+                            <div class="timeline timeline-one-side">
+                              <div class="timeline-block mb-3">
+                                <span class="timeline-step">
+                                  <i class="material-icons text-danger text-gradient">sync_disabled</i>
+                                </span>
+                                <div class="timeline-content">
+                                  <h6 class="text-dark text-sm font-weight-bold mb-0">En cours de résiliation, <?php echo($nom); ?></h6>
+                                  <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Demande du : <?php echo($formatted_transfer_date); ?> - <?php echo $mobile; ?></p>
+                                </div>
+                              </div>
+                            </div>
+                              <?php
+                            endif ;
                         endforeach;
                         endwhile;
                       endif;
@@ -399,7 +413,7 @@ endif;
               <h6>Lignes fixes en cours de portabilité</h6>
               <p class="text-sm">
                 <i class="fa fa-mobile text-success" aria-hidden="true"></i>
-                <span class="font-weight-bold"><?php echo count($line_in_transfer_fixes); ?></span> lignes en cours...
+                <span class="font-weight-bold"><?php echo count($line_in_transfer_fixes); ?></span> lignes en cours de transfert...
               </p>
             </div>
             <div class="card-body p-3">
@@ -426,12 +440,26 @@ endif;
                               </span>
                               <div class="timeline-content">
                                 <h6 class="text-dark text-sm font-weight-bold mb-0">En cours de transfert, <?php echo($contact); ?></h6>
-                                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0"><?php echo($formatted_transfer_date); ?> - <?php echo $fixes; ?></p>
+                                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Prévu le : <?php echo($formatted_transfer_date); ?> - <?php echo $fixes; ?></p>
                               </div>
                             </div>
                           </div>
-                            <?php
+                          <?php
                           endif ;
+                          if( $stat == 'En Résil.' ): ?>
+                            <div class="timeline timeline-one-side">
+                              <div class="timeline-block mb-3">
+                                <span class="timeline-step">
+                                  <i class="material-icons text-danger text-gradient">sync_disabled</i>
+                                </span>
+                                <div class="timeline-content">
+                                  <h6 class="text-dark text-sm font-weight-bold mb-0">En cours de résiliation, <?php echo($contact); ?></h6>
+                                  <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Demande du : <?php echo($formatted_transfer_date); ?> - <?php echo $fixes; ?></p>
+                                </div>
+                              </div>
+                            </div>
+                            <?php
+                            endif ;
                         endforeach;
                         endwhile;
                       endif;
