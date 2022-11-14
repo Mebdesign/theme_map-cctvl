@@ -192,9 +192,9 @@ endif;
                       <i class="fa fa-ellipsis-v text-secondary"></i>
                     </a>
                     <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
-                      <li><a class="dropdown-item border-radius-md" href="javascript:;">Action</a></li>
-                      <li><a class="dropdown-item border-radius-md" href="javascript:;">Another action</a></li>
-                      <li><a class="dropdown-item border-radius-md" href="javascript:;">Something else here</a></li>
+                      <li><a class="dropdown-item border-radius-md" href="javascript:;">Toutes le lignes</a></li>
+                      <li><a class="dropdown-item border-radius-md engaged" href="javascript:;">Lignes engagées</a></li>
+                      <li><a class="dropdown-item border-radius-md no-engaged" href="javascript:;">Lignes non engagées</a></li>
                     </ul>
                   </div>
                 </div>
@@ -224,6 +224,7 @@ endif;
                               $new_fin_dengagement = date("d/m/Y", strtotime($fin_dengagement));
                               $fin_dengagement_time   =   strtotime($fin_dengagement);
                               $current_time   =   strtotime(date("Y-m-d"));
+
                                 if($fin_dengagement_time > $current_time) :
                                   array_push($engaged_line, get_sub_field('lignes_mobiles'));
                                   ?>
@@ -423,7 +424,7 @@ endif;
             <div class="card-header pb-0">
               <h6>Lignes fixes en cours de portabilité</h6>
               <p class="text-sm">
-                <i class="fa fa-mobile text-warning" aria-hidden="true"></i>
+                <i class="fa fa-sync text-warning" aria-hidden="true"></i>
                 <span class="font-weight-bold"><?php echo count($line_in_transfer_fixes); ?></span> lignes en cours de transfert...
                 <i class="fa fa-times-circle text-danger" aria-hidden="true"></i>
                 <span class="font-weight-bold"><?php echo count($line_in_resiliation_fixes); ?></span> lignes en cours de résiliation...                

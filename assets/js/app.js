@@ -44,5 +44,30 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
    })
 
+   var all = document.getElementsByClassName('.all')
+   var engaged = document.getElementsByClassName('.engaged')
+   var no_engaged = document.getElementsByClassName('.no_engaged')
+
+   all.addEventListener('click', mobilesDash)
+
+   function mobilesDash(e){
+    jQuery.ajax({
+        url: params.ajaxurl,
+        data: {
+            action: 'getID',
+            id: e.target.options.id,
+        },
+        success: function(data){
+            jQuery('#ajax').html(data);    
+            jQuery('main').animate({ scrollTop: position.top }, 'slow'); 
+            jQuery('.card-body-toggled ').hide()
+        },      
+        error : function(error){ 
+            console.log(error) 
+        }
+    })
+    
+}
+
 });
 
