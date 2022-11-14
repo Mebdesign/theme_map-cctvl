@@ -9,14 +9,16 @@ $posts = get_posts(
   'post_type' => 'site')
 );
 
-$copieurs = array();
-$internet = array();
-$phones = array();
-$mobiles = array();
-$engaged_line = array();
-$engaged_line_fixes = array();
-$line_in_transfer = array();
-$line_in_transfer_fixes = array();
+$copieurs                  = array();
+$internet                  = array();
+$phones                    = array();
+$mobiles                   = array();
+$engaged_line              = array();
+$engaged_line_fixes        = array();
+$line_in_transfer          = array();
+$line_in_resiliation       = array();
+$line_in_transfer_fixes    = array();
+$line_in_resiliation_fixes = array();
 
 if( $posts ):
   foreach( $posts as $post ):
@@ -46,6 +48,9 @@ if( $posts ):
               if( $stat == 'En Porta.' ):
                 array_push($line_in_transfer, get_sub_field('lignes_mobiles'));
               endif ;
+              if( $stat == 'En Résil.' ):
+                array_push($line_in_resiliation, get_sub_field('lignes_mobiles'));
+              endif ;              
             endforeach;
 
         endwhile;
@@ -75,6 +80,9 @@ if( $posts ):
               if( $stat == 'En Porta.' ):
                 array_push($line_in_transfer_fixes, get_sub_field('telephones_fixes'));
               endif ;
+              if( $stat == 'En Résil.' ):
+                array_push($line_in_resiliation_fixes, get_sub_field('telephones_fixes'));
+              endif ;              
             endforeach;
         endwhile;
       endif;
@@ -97,7 +105,7 @@ endif;
                 <i style="width:24px;" class="material-icons opacity-10">printer</i>
               </div>
               <div class="text-end pt-1">
-                <p class="text-sm mb-0 ">Nombre de copieurs</p>
+                <p class="text-sm mb-0">Nombre de copieurs</p>
                 <h4 class="mb-0"> <?php echo count($copieurs); ?></h4>
               </div>
             </div>
@@ -256,9 +264,12 @@ endif;
             <div class="card-header pb-0">
               <h6>Lignes mobiles en cours de portabilité</h6>
               <p class="text-sm">
-                <i class="fa fa-mobile text-success" aria-hidden="true"></i>
+                <i class="fa fa-sync text-warning" aria-hidden="true"></i>
                 <span class="font-weight-bold"><?php echo count($line_in_transfer); ?></span> lignes en cours de transfert...
+                <i class="fa fa-times-circle text-danger" aria-hidden="true"></i>
+                <span class="font-weight-bold"><?php echo count($line_in_resiliation); ?></span> lignes en cours de résiliation...
               </p>
+           
             </div>
             <div class="card-body p-3">
               <?php
@@ -412,8 +423,10 @@ endif;
             <div class="card-header pb-0">
               <h6>Lignes fixes en cours de portabilité</h6>
               <p class="text-sm">
-                <i class="fa fa-mobile text-success" aria-hidden="true"></i>
+                <i class="fa fa-mobile text-warning" aria-hidden="true"></i>
                 <span class="font-weight-bold"><?php echo count($line_in_transfer_fixes); ?></span> lignes en cours de transfert...
+                <i class="fa fa-times-circle text-danger" aria-hidden="true"></i>
+                <span class="font-weight-bold"><?php echo count($line_in_resiliation_fixes); ?></span> lignes en cours de résiliation...                
               </p>
             </div>
             <div class="card-body p-3">
