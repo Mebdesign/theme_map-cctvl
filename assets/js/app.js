@@ -8,7 +8,7 @@ if (win && document.querySelector('#sidenav-scrollbar')) {
   Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
 }
 
-document.addEventListener("DOMContentLoaded", function(event) { 
+document.addEventListener("DOMContentLoaded", function(event) {
   //Hide card body
   document.querySelectorAll('.card-body-toggled').forEach(function(el) {
     el.style.display = 'none';
@@ -31,12 +31,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   //Toggle display passwd on login form
   var eye_dashicon = document.querySelector('.wp-pwd .dashicons-visibility')
-  eye_dashicon?.addEventListener("click", function(event) { 
+  eye_dashicon?.addEventListener("click", function(event) {
     if(this.classList.contains('dashicons-visibility')){
       this.classList.toggle("dashicons-hidden")
       this.classList.remove("dashicons-visibility")
       this.parentElement.previousElementSibling.type = 'text'
-      
+
     } else {
       this.classList.toggle("dashicons-visibility")
       this.classList.remove("dashicons-hidden")
@@ -44,30 +44,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
    })
 
-   var all = document.getElementsByClassName('.all')
-   var engaged = document.getElementsByClassName('.engaged')
-   var no_engaged = document.getElementsByClassName('.no_engaged')
+   var all = document.querySelector('.all')
+   var engaged = document.querySelector('.engaged')
+   var no_engaged = document.querySelector('.no_engaged')
 
-   all.addEventListener('click', mobilesDash)
+   all.addEventListener('click', filterAll)
 
-   function mobilesDash(e){
-    jQuery.ajax({
-        url: params.ajaxurl,
-        data: {
-            action: 'getID',
-            id: e.target.options.id,
-        },
-        success: function(data){
-            jQuery('#ajax').html(data);    
-            jQuery('main').animate({ scrollTop: position.top }, 'slow'); 
-            jQuery('.card-body-toggled ').hide()
-        },      
-        error : function(error){ 
-            console.log(error) 
-        }
-    })
-    
-}
+  function filterAll(e){
+      console.log('alerte')
+  }
 
 });
 

@@ -9,6 +9,14 @@ $posts = get_posts(
   'post_type' => 'site')
 );
 
+function runMyFunction() {
+  echo 'I just ran a php function';
+}
+
+if (isset($_GET['all'])) {
+  runMyFunction();
+}
+
 $copieurs                  = array();
 $internet                  = array();
 $phones                    = array();
@@ -50,7 +58,7 @@ if( $posts ):
               endif ;
               if( $stat == 'En Résil.' ):
                 array_push($line_in_resiliation, get_sub_field('lignes_mobiles'));
-              endif ;              
+              endif ;
             endforeach;
 
         endwhile;
@@ -82,7 +90,7 @@ if( $posts ):
               endif ;
               if( $stat == 'En Résil.' ):
                 array_push($line_in_resiliation_fixes, get_sub_field('telephones_fixes'));
-              endif ;              
+              endif ;
             endforeach;
         endwhile;
       endif;
@@ -192,9 +200,9 @@ endif;
                       <i class="fa fa-ellipsis-v text-secondary"></i>
                     </a>
                     <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
-                      <li><a class="dropdown-item border-radius-md" href="javascript:;">Toutes le lignes</a></li>
+                      <li><a class="dropdown-item border-radius-md all" href="dashboard?all=true">Toutes les lignes</a></li>
                       <li><a class="dropdown-item border-radius-md engaged" href="javascript:;">Lignes engagées</a></li>
-                      <li><a class="dropdown-item border-radius-md no-engaged" href="javascript:;">Lignes non engagées</a></li>
+                      <li><a class="dropdown-item border-radius-md no-engaged" href="javascript:;">Lignes sans engagement</a></li>
                     </ul>
                   </div>
                 </div>
@@ -228,6 +236,7 @@ endif;
                                 if($fin_dengagement_time > $current_time) :
                                   array_push($engaged_line, get_sub_field('lignes_mobiles'));
                                   ?>
+                                  <div id="phone_lines"></div>
                                     <tr>
                                       <td>
                                         <div class="d-flex px-2 py-1">
@@ -270,7 +279,7 @@ endif;
                 <i class="fa fa-times-circle text-danger" aria-hidden="true"></i>
                 <span class="font-weight-bold"><?php echo count($line_in_resiliation); ?></span> lignes en cours de résiliation...
               </p>
-           
+
             </div>
             <div class="card-body p-3">
               <?php
@@ -427,7 +436,7 @@ endif;
                 <i class="fa fa-sync text-warning" aria-hidden="true"></i>
                 <span class="font-weight-bold"><?php echo count($line_in_transfer_fixes); ?></span> lignes en cours de transfert...
                 <i class="fa fa-times-circle text-danger" aria-hidden="true"></i>
-                <span class="font-weight-bold"><?php echo count($line_in_resiliation_fixes); ?></span> lignes en cours de résiliation...                
+                <span class="font-weight-bold"><?php echo count($line_in_resiliation_fixes); ?></span> lignes en cours de résiliation...
               </p>
             </div>
             <div class="card-body p-3">
