@@ -103,7 +103,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     })
   }
 
-
   function filterAllFixes(e){
     e.preventDefault()
     jQuery.ajax({
