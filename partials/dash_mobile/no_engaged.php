@@ -89,7 +89,6 @@ $posts = get_posts(
 
   if ( isset($args['args'] )) {
     $no_engaged = 'no engaged';
-
   }
 ?>
  <div class="card">

@@ -48,6 +48,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
   jQuery('#filtered_mobile').on('click', '.all', filterAll)
   jQuery('#filtered_mobile').on('click', '.engaged', filterEngaged)
   jQuery('#filtered_mobile').on('click', '.no-engaged', filterNoEngaged)
+  jQuery('#filtered_fixes').on('click', '.all_fixes', filterAllFixes)
+  jQuery('#filtered_fixes').on('click', '.engaged_fixes', filterEngagedFixes)
+  jQuery('#filtered_fixes').on('click', '.no_engaged_fixes', filterNoEngagedFixes)
 
   function filterAll(e){
     e.preventDefault()
@@ -99,6 +102,59 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     })
   }
+
+
+  function filterAllFixes(e){
+    e.preventDefault()
+    jQuery.ajax({
+        url: params.ajaxurl,
+        data: {
+            action: 'filterAllFixes',
+            args: 'all'
+        },
+        success: function(data){
+            jQuery('#filtered_fixes').html(data);
+        },
+        error : function(error){
+            console.log(error)
+        }
+    })
+  }
+
+  function filterEngagedFixes(e){
+    e.preventDefault()
+    jQuery.ajax({
+        url: params.ajaxurl,
+        data: {
+            action: 'filterEngagedFixes',
+            args: 'engaged'
+        },
+        success: function(data){
+            jQuery('#filtered_fixes').html(data);
+        },
+        error : function(error){
+            console.log(error)
+        }
+    })
+  }
+
+  function filterNoEngagedFixes(e){
+    e.preventDefault()
+    jQuery.ajax({
+        url: params.ajaxurl,
+        data: {
+            action: 'filterNoEngagedFixes',
+            args: 'no-engaged'
+        },
+        success: function(data){
+            jQuery('#filtered_fixes').html(data);
+        },
+        error : function(error){
+            console.log(error)
+        }
+    })
+  }
+
 
 });
 

@@ -151,7 +151,7 @@ add_action( 'wp_ajax_filterAll', 'ajaxAllfilter');
 
 function ajaxEngagedfilter(){
     if (isset ($_REQUEST)){
-        $args = $_REQUEST['filterEngaged'];
+        $args = $_REQUEST['args'];
         get_template_part('partials/dash_mobile/engaged');
         wp_die();
     } else {
@@ -170,3 +170,36 @@ function ajaxNoEngagedfilter(){
     }
 }
 add_action( 'wp_ajax_filterNoEngaged', 'ajaxNoEngagedfilter');
+
+function ajaxAllfilterFixes(){
+    if (isset ($_REQUEST)){
+        $args = $_REQUEST['args'];
+        get_template_part('partials/dash_fixes/all');
+        wp_die();
+    } else {
+        echo('There is a problem in your requestAjax function');
+    }
+}
+add_action( 'wp_ajax_filterAllFixes', 'ajaxAllfilterFixes');
+
+function ajaxEngagedfilterFixes(){
+    if (isset ($_REQUEST)){
+        $args = $_REQUEST['args'];
+        get_template_part('partials/dash_fixes/engaged');
+        wp_die();
+    } else {
+        echo('There is a problem in your requestAjax function');
+    }
+}
+add_action( 'wp_ajax_filterEngagedFixes', 'ajaxEngagedfilterFixes');
+
+function ajaxNoEngagedfilterFixes(){
+    if (isset ($_REQUEST)){
+        $args = $_REQUEST['args'];
+        get_template_part('partials/dash_fixes/no_engaged', null, array('args' => $args));
+        wp_die();
+    } else {
+        echo('There is a problem in your requestAjax function');
+    }
+}
+add_action( 'wp_ajax_filterNoEngagedFixes', 'ajaxNoEngagedfilterFixes');

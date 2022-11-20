@@ -334,6 +334,7 @@ endif;
       <!-- Lignes fixes -->
       <div class="row mb-4">
         <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
+        <div id="filtered_fixes">
           <div class="card">
             <div class="card-header p-3 pt-2">
               <div class="icon icon-lg icon-shape bg-gradient-success shadow-dark text-center border-radius-xl mt-n4 position-absolute">
@@ -355,9 +356,9 @@ endif;
                       <i class="fa fa-ellipsis-v text-secondary"></i>
                     </a>
                     <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
-                      <li><a class="dropdown-item border-radius-md" href="javascript:;">Action</a></li>
-                      <li><a class="dropdown-item border-radius-md" href="javascript:;">Another action</a></li>
-                      <li><a class="dropdown-item border-radius-md" href="javascript:;">Something else here</a></li>
+                      <li><a class="dropdown-item border-radius-md all_fixes" href="javascript:;">Toutes les lignes</a></li>
+                      <li><a class="dropdown-item border-radius-md engaged_fixes" href="javascript:;">Lignes engagées</a></li>
+                      <li><a class="dropdown-item border-radius-md no_engaged_fixes" href="javascript:;">Ligne sans engagement</a></li>
                     </ul>
                   </div>
                 </div>
@@ -419,7 +420,7 @@ endif;
                 </table>
               </div>
             </div>
-          </div>
+          </div></div>
         </div>
         <div class="col-lg-4 col-md-6">
           <div class="card h-100">
