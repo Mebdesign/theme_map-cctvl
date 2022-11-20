@@ -104,7 +104,7 @@ $posts = get_posts(
         <div class="col-lg-6 col-7">
           <h6 class="text-uppercase">Lignes en cours d'engagement</h6>
           <p class="text-sm mb-0">
-            <i class="fa fa-check text-info" aria-hidden="true"></i>
+            <i class="fa fa-check text-danger" aria-hidden="true"></i>
             <span class="font-weight-bold ms-1"><?php echo count($engaged_line); ?> lignes</span> au total
           </p>
         </div>

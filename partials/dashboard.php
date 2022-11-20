@@ -183,7 +183,7 @@ endif;
                 <div class="col-lg-6 col-7">
                   <h6 class="text-uppercase">Lignes mobiles en cours d'engagement <?php echo($args); ?></h6>
                   <p class="text-sm mb-0">
-                    <i class="fa fa-check text-info" aria-hidden="true"></i>
+                    <i class="fa fa-check text-danger" aria-hidden="true"></i>
                     <span class="font-weight-bold ms-1"><?php echo count($engaged_line); ?> lignes</span> au total
                   </p>
                 </div>
@@ -346,7 +346,7 @@ endif;
                 <div class="col-lg-6 col-7">
                   <h6 class="text-uppercase">Lignes fixes en cours d'engagement</h6>
                   <p class="text-sm mb-0">
-                    <i class="fa fa-check text-info" aria-hidden="true"></i>
+                    <i class="fa fa-check text-danger" aria-hidden="true"></i>
                     <span class="font-weight-bold ms-1"><?php echo count($engaged_line_fixes); ?> lignes</span> au total
                   </p>
                 </div>
