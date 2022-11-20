@@ -44,21 +44,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
    })
 
-   var all = jQuery('.all')
-   var engaged = jQuery('.engaged')
-   var no_engaged = jQuery('.no-engaged')
-
-
-  all.click(filterAll)
-  engaged.click(filterEngaged)
-  no_engaged.click(filterNoEngaged)
+  //Filter mobiles status
+  jQuery('#filtered').on('click', '.all', filterAll)
+  jQuery('#filtered').on('click', '.engaged', filterEngaged)
+  jQuery('#filtered').on('click', '.no-engaged', filterNoEngaged)
 
   function filterAll(e){
-
+    e.preventDefault()
     jQuery.ajax({
         url: params.ajaxurl,
         data: {
-            action: 'filterAll'
+            action: 'filterAll',
+            args: 'all'
         },
         success: function(data){
             jQuery('#filtered').html(data);
@@ -70,11 +67,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 
   function filterEngaged(e){
-
+    e.preventDefault()
     jQuery.ajax({
         url: params.ajaxurl,
         data: {
-            action: 'filterEngaged'
+            action: 'filterEngaged',
+            args: 'engaged'
         },
         success: function(data){
             jQuery('#filtered').html(data);
@@ -86,10 +84,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 
   function filterNoEngaged(e){
+    e.preventDefault()
     jQuery.ajax({
         url: params.ajaxurl,
         data: {
-            action: 'filterNoEngaged'
+            action: 'filterNoEngaged',
+            args: 'no-engaged'
         },
         success: function(data){
             jQuery('#filtered').html(data);

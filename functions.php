@@ -140,7 +140,7 @@ add_filter('acf/load_field/name=_post_title', 'wd_post_title_acf_name');
 
 function ajaxAllfilter(){
     if (isset ($_REQUEST)){
-        $all = $_REQUEST['all'];
+        $args = $_REQUEST['all'];
         get_template_part('partials/dash/all');
         wp_die();
     } else {
@@ -151,7 +151,7 @@ add_action( 'wp_ajax_filterAll', 'ajaxAllfilter');
 
 function ajaxEngagedfilter(){
     if (isset ($_REQUEST)){
-        $engaged = $_REQUEST['filterEngaged'];
+        $args = $_REQUEST['filterEngaged'];
         get_template_part('partials/dash/engaged');
         wp_die();
     } else {
@@ -162,8 +162,8 @@ add_action( 'wp_ajax_filterEngaged', 'ajaxEngagedfilter');
 
 function ajaxNoEngagedfilter(){
     if (isset ($_REQUEST)){
-        $no_engaged = $_REQUEST['filterNoEngaged'];
-        get_template_part('partials/dash/no_engaged');
+        $args = $_REQUEST['args'];
+        get_template_part('partials/dash/no_engaged', null, array('args' => $args));
         wp_die();
     } else {
         echo('There is a problem in your requestAjax function');
