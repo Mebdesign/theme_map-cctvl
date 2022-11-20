@@ -19,9 +19,15 @@ function theme_scripts() {
     wp_enqueue_script( 'bootstrap', get_template_directory_uri() . "/assets/js/core/bootstrap.min.js", "", false, true );
     wp_enqueue_script( 'perfect-scroll-bar', get_template_directory_uri() . "/assets/js/plugins/perfect-scrollbar.min.js", "", false, true );
     wp_enqueue_script( 'smooth-scroll-bar', get_template_directory_uri() . "/assets/js/plugins/smooth-scrollbar.min.js", "", false, true );
-    wp_enqueue_script( 'app', get_template_directory_uri() . "/assets/js/app.js", "", false, true );
+    wp_enqueue_script( 'app', get_template_directory_uri() . "/assets/js/app.js", array( 'jquery' ), '1.0.0', true );
     wp_enqueue_script( 'github-button', "https://buttons.github.io/buttons.js", "", false, true );
     wp_enqueue_script( 'center-control', get_template_directory_uri() . "/assets/js/material-dashboard.min.js?v=3.0.4", "", false, true );
+    wp_enqueue_script( 'filtermobile', get_template_directory_uri() . '/assets/js/app.js' , array('jquery'), false, true );
+    wp_localize_script( 'filtermobile', 'params',
+    array(
+    'ajaxurl'           => admin_url( 'admin-ajax.php' ),
+    )
+);
 }
 
 function register_my_menus() {
@@ -33,7 +39,7 @@ function register_my_menus() {
        )
      );
    }
-   add_action( 'init', 'register_my_menus' );
+add_action( 'init', 'register_my_menus' );
 
 
 /* Add custom classes to list item "li" */
@@ -132,6 +138,35 @@ function wd_post_title_acf_name( $field ) {
 }
 add_filter('acf/load_field/name=_post_title', 'wd_post_title_acf_name');
 
+function ajaxAllfilter(){
+    if (isset ($_REQUEST)){
+        $all = $_REQUEST['all'];
+        get_template_part('partials/dash/all');
+        wp_die();
+    } else {
+        echo('There is a problem in your requestAjax function');
+    }
+}
+add_action( 'wp_ajax_filterAll', 'ajaxAllfilter');
 
+function ajaxEngagedfilter(){
+    if (isset ($_REQUEST)){
+        $engaged = $_REQUEST['filterEngaged'];
+        get_template_part('partials/dash/engaged');
+        wp_die();
+    } else {
+        echo('There is a problem in your requestAjax function');
+    }
+}
+add_action( 'wp_ajax_filterEngaged', 'ajaxEngagedfilter');
 
-
+function ajaxNoEngagedfilter(){
+    if (isset ($_REQUEST)){
+        $no_engaged = $_REQUEST['filterNoEngaged'];
+        get_template_part('partials/dash/no_engaged');
+        wp_die();
+    } else {
+        echo('There is a problem in your requestAjax function');
+    }
+}
+add_action( 'wp_ajax_filterNoEngaged', 'ajaxNoEngagedfilter');

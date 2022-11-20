@@ -44,14 +44,60 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
    })
 
-   var all = document.querySelector('.all')
-   var engaged = document.querySelector('.engaged')
-   var no_engaged = document.querySelector('.no_engaged')
+   var all = jQuery('.all')
+   var engaged = jQuery('.engaged')
+   var no_engaged = jQuery('.no-engaged')
 
-   all.addEventListener('click', filterAll)
+
+  all.click(filterAll)
+  engaged.click(filterEngaged)
+  no_engaged.click(filterNoEngaged)
 
   function filterAll(e){
-      console.log('alerte')
+
+    jQuery.ajax({
+        url: params.ajaxurl,
+        data: {
+            action: 'filterAll'
+        },
+        success: function(data){
+            jQuery('#filtered').html(data);
+        },
+        error : function(error){
+            console.log(error)
+        }
+    })
+  }
+
+  function filterEngaged(e){
+
+    jQuery.ajax({
+        url: params.ajaxurl,
+        data: {
+            action: 'filterEngaged'
+        },
+        success: function(data){
+            jQuery('#filtered').html(data);
+        },
+        error : function(error){
+            console.log(error)
+        }
+    })
+  }
+
+  function filterNoEngaged(e){
+    jQuery.ajax({
+        url: params.ajaxurl,
+        data: {
+            action: 'filterNoEngaged'
+        },
+        success: function(data){
+            jQuery('#filtered').html(data);
+        },
+        error : function(error){
+            console.log(error)
+        }
+    })
   }
 
 });
