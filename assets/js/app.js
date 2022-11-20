@@ -45,9 +45,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
    })
 
   //Filter mobiles status
-  jQuery('#filtered').on('click', '.all', filterAll)
-  jQuery('#filtered').on('click', '.engaged', filterEngaged)
-  jQuery('#filtered').on('click', '.no-engaged', filterNoEngaged)
+  jQuery('#filtered_mobile').on('click', '.all', filterAll)
+  jQuery('#filtered_mobile').on('click', '.engaged', filterEngaged)
+  jQuery('#filtered_mobile').on('click', '.no-engaged', filterNoEngaged)
 
   function filterAll(e){
     e.preventDefault()
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             args: 'all'
         },
         success: function(data){
-            jQuery('#filtered').html(data);
+            jQuery('#filtered_mobile').html(data);
         },
         error : function(error){
             console.log(error)
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             args: 'engaged'
         },
         success: function(data){
-            jQuery('#filtered').html(data);
+            jQuery('#filtered_mobile').html(data);
         },
         error : function(error){
             console.log(error)
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             args: 'no-engaged'
         },
         success: function(data){
-            jQuery('#filtered').html(data);
+            jQuery('#filtered_mobile').html(data);
         },
         error : function(error){
             console.log(error)

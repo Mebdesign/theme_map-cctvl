@@ -171,7 +171,7 @@ endif;
       <!-- Mobiles -->
       <div class="row mb-5">
         <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
-          <div id="filtered">
+          <div id="filtered_mobile">
           <div class="card">
             <div class="card-header p-3 pt-2">
               <div class="icon icon-lg icon-shape bg-gradient-info shadow-dark text-center border-radius-xl mt-n4 position-absolute">
