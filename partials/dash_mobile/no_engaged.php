@@ -19,14 +19,6 @@ $posts = get_posts(
   if( $posts ):
     foreach( $posts as $post ):
         setup_postdata( $post );
-
-        // Printers
-        if( have_rows('copieurs_et_impressions') ):
-            while ( have_rows('copieurs_et_impressions') ) : the_row();
-                $materiel = array_push($copieurs, get_sub_field('materiel'));
-            endwhile;
-        endif;
-
         // Mobiles
         if( have_rows('tel_mobiles') ):
           while ( have_rows('tel_mobiles') ) : the_row();
@@ -51,38 +43,6 @@ $posts = get_posts(
 
           endwhile;
         endif;
-
-        // Internet
-        if( have_rows('tel_fixes') ):
-          while ( have_rows('tel_fixes') ) : the_row();
-              $materiel = array_push($internet, get_sub_field('internet'));
-          endwhile;
-        endif;
-
-        // Lignes fixes
-        if( have_rows('tel_fixes') ):
-          while ( have_rows('tel_fixes') ) : the_row();
-              array_push($phones, get_sub_field('telephones_fixes'));
-              $fin_dengagement = get_sub_field('fin_dengagement');
-              $new_fin_dengagement = date("d/m/Y", strtotime($fin_dengagement));
-              $fin_dengagement_time   =   strtotime($fin_dengagement);
-              $current_time   =   strtotime(date("Y-m-d"));
-              $status = get_sub_field('status');
-
-              if($fin_dengagement_time > $current_time) :
-                array_push($engaged_line_fixes, get_sub_field('telephones_fixes'));
-              endif;
-              foreach( $status as $stat ):
-                if( $stat == 'En Porta.' ):
-                  array_push($line_in_transfer_fixes, get_sub_field('telephones_fixes'));
-                endif ;
-                if( $stat == 'En Résil.' ):
-                  array_push($line_in_resiliation_fixes, get_sub_field('telephones_fixes'));
-                endif ;
-              endforeach;
-          endwhile;
-        endif;
-
     endforeach;
     wp_reset_postdata();
   endif;
