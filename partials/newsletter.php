@@ -15,6 +15,7 @@ Template Name: newsletter
             <div class="col-8">
                 <div class="card my-4 p-3"> 
                     <?php if ( have_posts() ) : while ( have_posts() ) : the_post();
+                        the_title();
                         the_content();
                         endwhile; else: ?>
                         <p>Sorry, no posts matched your criteria.</p>
