@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: home
+Template Name: newsletter
 */
 ?>
 
@@ -41,13 +41,6 @@ Template Name: home
             </div>            
         </div>
 
-
-
-
-
-
-
-        
 
         <?php get_footer() ?>
 
