@@ -337,6 +337,8 @@
                         <tr>
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Prestataire</th>
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Matériel</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Volumétrie</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Numéro de contrat</th>
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Lieu</th>
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Début de de contrat</th>
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fin de contrat</th>
@@ -347,6 +349,7 @@
                       <?php if( have_rows('copieurs_et_impressions') ): ?>
                           <?php while( have_rows('copieurs_et_impressions') ) : the_row(); ?>
                           <?php $materiel = get_sub_field('materiel'); ?>
+                          <?php $volumetrie = get_sub_field('volumetrie'); ?>
                           <?php $marque = get_sub_field('marque'); ?>
                           <?php $prestataire = get_sub_field('prestataire'); ?>
                           <?php $contact = get_sub_field('contact'); ?>
@@ -355,6 +358,7 @@
                           <?php $end = get_sub_field('fin_de_contrat'); ?>
                           <?php $end_date = date("d/m/Y", strtotime($end)); ?>
                           <?php $lieu = get_sub_field('lieu_du_copieur'); ?>
+                          <?php $contrat = get_sub_field('numero_de_contrat'); ?>
                           <?php
 
                            $end_time   =   strtotime($end);
@@ -388,6 +392,37 @@
                               <td>
                                 <p class="text-xs font-weight-bold mb-0"><?php  echo($materiel); ?></p>
                                 <p class="text-xs text-secondary mb-0"><?php  echo($marque); ?></p>
+                              </td>
+                              <td>
+                                <p class="text-xs font-weight-bold mb-0">
+                                  <?php
+                                    if( have_rows('volumetrie') ):
+                                      while( have_rows('volumetrie') ) : the_row();
+                                        $n_b = get_sub_field('copies_n_b');
+                                        $color = get_sub_field('copies_couleurs');
+                                        $periode = get_sub_field('periode');
+                                        echo('Noir et blanc : ' . $n_b . '</br>');
+                                        echo('Couleur : ' . $color . '</br>');
+                                  ?>
+                                </p>
+                                  <p class="text-xs text-secondary mb-0"><?php  echo($periode ); ?></p>
+                                <?php  endwhile;
+                                    else :
+                                     ?> <p class="text-xs text-secondary mb-0">Non renseigné </p> <?php
+                                    endif
+                                ?>
+                              </td>
+                              <td>
+                                <p class="text-xs font-weight-bold mb-0">
+                                  <?php
+                                    if( $contrat):
+                                        echo( $contrat );
+                                  ?>
+                                </p><?php
+                                    else :
+                                     ?> <p class="text-xs text-secondary mb-0">Non renseigné </p> <?php
+                                    endif
+                                ?>
                               </td>
                               <td>
                                 <p class="text-xs font-weight-bold mb-0"><?php  echo($lieu); ?></p>
