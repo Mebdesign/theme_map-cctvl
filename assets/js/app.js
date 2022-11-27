@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     el.addEventListener('click', function(){
       var target = this.closest(".card-header").nextElementSibling
       target.style.display = target.style.display === 'none' ? 'block' : 'none';
+      console.log(target)
     })
   });
 
