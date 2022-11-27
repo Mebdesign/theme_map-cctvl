@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 
   //Toggle display passwd on login form
-  var eye_dashicon = document.querySelector('.wp-pwd .dashicons-visibility')
+  var eye_dashicon = document.querySelector('.dashicons-visibility')
   eye_dashicon?.addEventListener("click", function(event) {
     if(this.classList.contains('dashicons-visibility')){
       this.classList.toggle("dashicons-hidden")

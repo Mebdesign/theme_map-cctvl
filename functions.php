@@ -28,6 +28,17 @@ function theme_scripts() {
     )
 );
 }
+// BLOCK BACKEND ACCESS FOR NON-ADMINS
+/*
+add_action( 'init', 'blockusers_init' );
+function blockusers_init() {
+    // If accessing the admin panel and not an admin
+    if ( is_admin() && !current_user_can('level_10') ) {
+        // Redirect to the homepage
+        wp_redirect( home_url() );
+        exit;
+    }
+}*/
 
 /*
  * Change WP Login file URL using "login_url" filter hook
@@ -86,6 +97,7 @@ add_action('init', 'disable_admin_bar_for_subscribers', 9);
 
 function my_login_logo() { ?>
     <style type="text/css">
+        /* necessary when using wp-login.php
         body{
             background-image: url('https://www.ccterresduvaldeloire.fr/medias/2019/05/default1-e1565095518289.jpg') !important;
             background-size: cover !important;
@@ -103,6 +115,7 @@ function my_login_logo() { ?>
         .dashicons-translation:before {
             color: #ffffff !important;
         }
+        */
 
         #login h1 a, .login h1 a {
             background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/assets/img/logos/Logo-CCTVL-84.png) !important;
