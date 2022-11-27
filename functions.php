@@ -28,17 +28,17 @@ function theme_scripts() {
     )
 );
 }
-// BLOCK BACKEND ACCESS FOR NON-ADMINS
-/*
-add_action( 'init', 'blockusers_init' );
-function blockusers_init() {
-    // If accessing the admin panel and not an admin
-    if ( is_admin() && !current_user_can('level_10') ) {
-        // Redirect to the homepage
-        wp_redirect( home_url() );
-        exit;
-    }
-}*/
+
+/* Disabled admin bar for subscribers */
+function disable_admin_bar_for_subscribers(){
+    if ( is_user_logged_in() ):
+        global $current_user;
+        if( !empty( $current_user->caps['subscriber'] ) ):
+            add_filter('show_admin_bar', '__return_false');
+        endif;
+    endif;
+}
+add_action('init', 'disable_admin_bar_for_subscribers', 9);
 
 /*
  * Change WP Login file URL using "login_url" filter hook
@@ -83,17 +83,6 @@ function _namespace_modify_menuclass($ulclass) {
     return preg_replace('/<a /', '<a class="nav-link text-white "', $ulclass);
 }
 add_filter('wp_nav_menu', '_namespace_modify_menuclass');
-
-/* Disabled admin bar for subscribers */
-function disable_admin_bar_for_subscribers(){
-    if ( is_user_logged_in() ):
-        global $current_user;
-        if( !empty( $current_user->caps['subscriber'] ) ):
-            add_filter('show_admin_bar', '__return_false');
-        endif;
-    endif;
-}
-add_action('init', 'disable_admin_bar_for_subscribers', 9);
 
 function my_login_logo() { ?>
     <style type="text/css">
