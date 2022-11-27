@@ -131,22 +131,6 @@ add_filter( 'login_headerurl', 'mb_login_url' );
 function mb_login_title() { return get_option( 'blogname' ); }
 add_filter( 'login_headertitle', 'mb_login_title' );
 
-// Redirect default URL link to a custom page
-/*
-add_action('init','custom_login');
-function custom_login(){
-    global $pagenow;
-    if( 'wp-login.php' == $pagenow  && $_GET['action']!="logout" && $_GET['action']!= "lostpassword" ) {
-        wp_redirect(get_site_url() . '/custom-login');
-        exit();
-    }
-    if( 'wp-login.php' == $pagenow  && $_GET['action']== "lostpassword" ) {
-        wp_redirect(get_site_url() . '/custom-login?action=lostpassword');
-        exit();
-    }
-}
-*/
-
 // Modify ACF Form Label for Post Title Field
 function wd_post_title_acf_name( $field ) {
     if( is_page( 'Créer un nouvel utilisateur ADEFI' ) ) { // if on the vendor page
