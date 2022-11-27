@@ -29,6 +29,25 @@ function theme_scripts() {
 );
 }
 
+/*
+ * Change WP Login file URL using "login_url" filter hook
+ * https://developer.wordpress.org/reference/hooks/login_url/
+ */
+add_filter( 'login_url', 'custom_login_url', PHP_INT_MAX );
+function custom_login_url( $login_url ) {
+	$login_url = site_url( 'custom-login.php', 'login' );
+    return $login_url;
+}
+
+// Redirect users who arent logged in...
+add_action( 'wp', 'members_only' );
+function members_only() {
+    global $pagenow;
+    // Check to see if user in not logged in and not on the login page
+    if( !is_user_logged_in() && $pagenow != 'custom-login.php' )
+          auth_redirect();
+}
+
 function register_my_menus() {
     // Load menu options
     register_nav_menus(
