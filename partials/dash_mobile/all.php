@@ -87,6 +87,7 @@ $posts = get_posts(
         <thead>
           <tr>
             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Utilisateur</th>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Operateur</th>
             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Ligne</th>
             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
           </tr>
@@ -120,6 +121,9 @@ $posts = get_posts(
                                 </div>
                               </div>
                             </td>
+                            <td>
+                              <span class="text-xs font-weight-bold"> <?php echo($prestataire); ?> </span>
+                            </td>                            
                             <td>
                               <span class="text-xs font-weight-bold"> <?php echo($mobile); ?> </span>
                             </td>
