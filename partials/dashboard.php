@@ -336,7 +336,7 @@ endif;
       </div>
 
       <!-- Lignes fixes -->
-      <div class="row mb-4">
+      <div class="row mb-5">
         <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
         <div id="filtered_fixes">
           <div class="card">
@@ -491,6 +491,165 @@ endif;
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- Copieurs -->
+      <div class="row mb-5">
+        <div class="col-lg-12 col-md-6 mb-md-0 mb-4">
+        <div id="filtered_printers">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+                <i style="width:24px;" class="material-icons opacity-10">printer</i>
+              </div>
+            </div>
+            <div class="card-header mt-3 pb-0">
+              <div class="row">
+                <div class="col-lg-6 col-7">
+                  <h6 class="text-uppercase">Parc des copieurs</h6>
+                  <p class="text-sm mb-0">
+                    <i class="fa fa-check text-danger" aria-hidden="true"></i>
+                    <span class="font-weight-bold ms-1"><?php echo count($copieurs);  ?> copieurs</span> au total
+                  </p>
+                </div>
+                <div class="col-lg-6 col-5 my-auto text-end">
+                  <div class="dropdown float-lg-end pe-4">
+                    <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fa fa-ellipsis-v text-secondary"></i>
+                    </a>
+                    <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
+                      <li><a class="dropdown-item border-radius-md all_fixes" href="javascript:;">Tous les copieurs</a></li>
+                      <li><a class="dropdown-item border-radius-md engaged_fixes" href="javascript:;">copieurs engagés</a></li>
+                      <li><a class="dropdown-item border-radius-md no_engaged_fixes" href="javascript:;">Copieur sans engagement</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-body px-0 pb-2">
+              <div class="table-responsive">
+                <table class="table align-items-center mb-0">
+                  <thead>
+                    <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Prestataire</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Matériel</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Volumétrie</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Numéro de contrat</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Lieu</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Début de de contrat</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fin de contrat</th>
+                          <th class="text-secondary opacity-7"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <?php
+                      if( $posts ):
+                        foreach( $posts as $post ):
+                            setup_postdata( $post );
+                            if( have_rows('copieurs_et_impressions') ):
+                              while ( have_rows('copieurs_et_impressions') ) : the_row();
+                              $materiel = get_sub_field('materiel'); 
+                              $volumetrie = get_sub_field('volumetrie'); 
+                              $marque = get_sub_field('marque'); 
+                              $prestataire = get_sub_field('prestataire'); 
+                              $contact = get_sub_field('contact'); 
+                              $start = get_sub_field('debut_de_contrat'); 
+                              $start_date = date("d/m/Y", strtotime($start)); 
+                              $end = get_sub_field('fin_de_contrat'); 
+                              $end_date = date("d/m/Y", strtotime($end)); 
+                              $lieu = get_sub_field('lieu_du_copieur'); 
+                              $contrat = get_sub_field('numero_de_contrat');
+
+                              $end_time   =   strtotime($end);
+                              $cur_time   =   strtotime(date("Y-m-d"));
+   
+                               if( $end_time > strtotime("+3 months", $cur_time))
+                               {
+   
+                                 $badge = 'success';
+   
+                               } elseif($end_time > strtotime("+2 months", $cur_time)){
+   
+                                 $badge = 'warning';
+   
+                               }
+                               else{
+   
+                                 $badge = 'danger';
+                               }
+                               ?>
+                               <tr>
+                                <td>
+                                  <div class="d-flex px-2 py-1">
+                                    <div class="d-flex flex-column justify-content-center">
+                                      <h6 class="mb-0 text-sm"><?php  echo($prestataire); ?></h6>
+                                      <p class="text-xs text-secondary mb-0"><?php  echo($contact); ?></p>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td>
+                                  <p class="text-xs font-weight-bold mb-0"><?php  echo($materiel); ?></p>
+                                  <p class="text-xs text-secondary mb-0"><?php  echo($marque); ?></p>
+                                </td>
+                                <td>
+                                  <p class="text-xs font-weight-bold mb-0">
+                                    <?php
+                                      if( have_rows('volumetrie') ):
+                                        while( have_rows('volumetrie') ) : the_row();
+                                          $n_b = get_sub_field('copies_n_b');
+                                          $color = get_sub_field('copies_couleurs');
+                                          $periode = get_sub_field('periode');
+                                          echo('Noir et blanc : ' . $n_b . '</br>');
+                                          echo('Couleur : ' . $color . '</br>');
+                                    ?>
+                                  </p>
+                                    <p class="text-xs text-secondary mb-0"><?php  echo($periode ); ?></p>
+                                  <?php  endwhile;
+                                      else :
+                                        ?> <p class="text-xs text-secondary mb-0">Non renseigné </p> <?php
+                                      endif
+                                  ?>
+                                </td>
+                                <td>
+                                  <p class="text-xs font-weight-bold mb-0">
+                                    <?php
+                                      if( $contrat):
+                                          echo( $contrat );
+                                    ?>
+                                  </p><?php
+                                      else :
+                                        ?> <p class="text-xs text-secondary mb-0">Non renseigné </p> <?php
+                                      endif
+                                  ?>
+                                </td>
+                                <td>
+                                  <p class="text-xs font-weight-bold mb-0"><?php  echo($lieu); ?></p>
+                                  <p class="text-xs text-secondary mb-0"><?php  echo($marque); ?></p>
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                  <span class="text-secondary text-xs font-weight-bold"><?php  echo($start_date); ?></span>
+                                </td>
+                                <td class="align-middle text-center">
+                                  <span class="badge badge-sm bg-gradient-<?php echo $badge ?>"><?php echo $end_date; ?></span>
+                                </td>
+                                <td class="align-middle">
+                                  <?php if( current_user_can('administrator')  ) { ?>
+                                    <?php echo '<a class="text-secondary font-weight-bold text-xs" href="'. get_edit_post_link($id) .'">Edit</a>'; ?>
+                                  <?php } ?>
+                                </td>
+                              </tr><?php 
+                              endwhile;
+                            endif;
+                        endforeach;
+                        wp_reset_postdata();
+                      endif;
+                      ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div></div>
         </div>
       </div>
 
