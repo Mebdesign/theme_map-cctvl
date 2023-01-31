@@ -23,6 +23,7 @@ $line_in_resiliation_fixes = array();
 if( $posts ):
   foreach( $posts as $post ):
       setup_postdata( $post );
+      
 
       // Printers
       if( have_rows('copieurs_et_impressions') ):
@@ -532,10 +533,11 @@ endif;
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Prestataire</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Prestataire</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Service</th>
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Matériel</th>
-                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Volumétrie</th>
-                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Numéro de contrat</th>
+                          <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Volumétrie</th> -->
+                          <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Numéro de contrat</th> -->
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Lieu</th>
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Début de de contrat</th>
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fin de contrat</th>
@@ -560,6 +562,8 @@ endif;
                               $end_date = date("d/m/Y", strtotime($end)); 
                               $lieu = get_sub_field('lieu_du_copieur'); 
                               $contrat = get_sub_field('numero_de_contrat');
+                              $nom_du_service = get_field( "nom_du_service" );
+                              
 
                               $end_time   =   strtotime($end);
                               $cur_time   =   strtotime(date("Y-m-d"));
@@ -589,12 +593,21 @@ endif;
                                   </div>
                                 </td>
                                 <td>
+                                  <div class="d-flex px-2 py-1">
+                                    <div class="d-flex flex-column justify-content-center">
+                                      <h6 class="mb-0 text-sm"><?php  echo($nom_du_service); ?></h6>
+                                    </div>
+                                  </div>
+                                </td>                                
+                                <td>
                                   <p class="text-xs font-weight-bold mb-0"><?php  echo($materiel); ?></p>
                                   <p class="text-xs text-secondary mb-0"><?php  echo($marque); ?></p>
                                 </td>
+                               <!--
                                 <td>
                                   <p class="text-xs font-weight-bold mb-0">
                                     <?php
+                                    /*
                                       if( have_rows('volumetrie') ):
                                         while( have_rows('volumetrie') ) : the_row();
                                           $n_b = get_sub_field('copies_n_b');
@@ -602,27 +615,32 @@ endif;
                                           $periode = get_sub_field('periode');
                                           echo('Noir et blanc : ' . $n_b . '</br>');
                                           echo('Couleur : ' . $color . '</br>');
+                                          */
                                     ?>
                                   </p>
-                                    <p class="text-xs text-secondary mb-0"><?php  echo($periode ); ?></p>
-                                  <?php  endwhile;
+                                    <p class="text-xs text-secondary mb-0"><?php // echo($periode ); ?></p>
+                                  <?php  /*endwhile;
                                       else :
                                         ?> <p class="text-xs text-secondary mb-0">Non renseigné </p> <?php
-                                      endif
+                                      endif */
                                   ?>
                                 </td>
+                                
                                 <td>
                                   <p class="text-xs font-weight-bold mb-0">
                                     <?php
-                                      if( $contrat):
+                                     /* if( $contrat):
                                           echo( $contrat );
+                                      */
                                     ?>
                                   </p><?php
-                                      else :
+                                     /* else :
                                         ?> <p class="text-xs text-secondary mb-0">Non renseigné </p> <?php
                                       endif
+                                      */
                                   ?>
                                 </td>
+                                -->
                                 <td>
                                   <p class="text-xs font-weight-bold mb-0"><?php  echo($lieu); ?></p>
                                   <p class="text-xs text-secondary mb-0"><?php  echo($marque); ?></p>
