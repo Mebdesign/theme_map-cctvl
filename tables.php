@@ -454,6 +454,128 @@
             </div>
         </div> <!-- end printers -->
 
+        <div class="row"> <!-- start pc -->
+            <div class="col-12">
+              <div class="card my-4">
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                  <div class="bg-gradient-custom-brown shadow-custom-brown border-radius-lg pt-4 pb-3 d-flex justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <h6 class="text-white ps-3">Parc PC - <?php the_title(); ?></h6>
+                    </div>
+                    <div class="form-check form-switch d-flex align-items-center pe-3">
+                        <input class="form-check-input ms-auto flexSwitchCheckDefault" type="checkbox">
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body card-body-toggled px-0 pb-2">
+                  <div class="table-responsive p-0">
+                    <table class="table align-items-center mb-0">
+                      <thead>
+                        <tr>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Quantité</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">N° inventaire</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Désignation</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Prestataire</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Valeur</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Service</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date d'achat</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date de renouvellement</th>
+                          <th class="text-secondary opacity-7"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <?php if( have_rows('postes') ): ?>
+                          <?php while( have_rows('postes') ) : the_row(); ?>
+                          <?php $qte = get_sub_field('quantite'); ?>
+                          <?php $inventaire = get_sub_field('n_inventaire'); ?>
+                          <?php $designation = get_sub_field('designation'); ?>
+                          <?php $prestataire = get_sub_field('prestataire'); ?>
+                          <?php $commentaire = get_sub_field('commentaire'); ?>
+                          <?php $start = get_sub_field('date_achat'); ?>
+                          <?php $start_date = date("d/m/Y", strtotime($start)); ?>
+                          <?php $end = get_sub_field('date_renouvellement'); ?>
+                          <?php $end_date = date("d/m/Y", strtotime($end)); ?>
+                          <?php $valeur = get_sub_field('valeur'); ?>
+                          <?php $service = get_sub_field('service'); ?>
+                          <?php
+
+                           $end_time   =   strtotime($end);
+                           $cur_time   =   strtotime(date("Y-m-d"));
+
+                            if( $end_time > strtotime("+3 months", $cur_time))
+                            {
+
+                              $badge = 'success';
+
+                            } elseif($end_time > strtotime("+2 months", $cur_time)){
+
+                              $badge = 'warning';
+
+                            }
+                            else{
+
+                              $badge = 'danger';
+                            }
+
+                          ?>
+                            <tr>
+                              <td>
+                                <div class="d-flex px-2 py-1">
+                                  <div class="d-flex flex-column justify-content-center">
+                                    <h6 class="mb-0 text-sm"><?php  echo($qte); ?></h6>
+                                    <p class="text-xs text-secondary mb-0"><?php  echo($contact); ?></p>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>
+                                <p class="text-xs font-weight-bold mb-0"><?php  echo($inventaire); ?></p>
+                                <p class="text-xs text-secondary mb-0"><?php  echo($marque); ?></p>
+                              </td>
+                              <td>
+                                <p class="text-xs text-secondary mb-0"><?php  echo($designation ); ?></p>
+                              </td>
+                              <td>
+                                <p class="text-xs font-weight-bold mb-0">
+                                  <?php
+                                    if( $contrat):
+                                        echo( $contrat );
+                                  ?>
+                                </p><?php
+                                    else :
+                                     ?> <p class="text-xs text-secondary mb-0">Non renseigné </p> <?php
+                                    endif
+                                ?>
+                              </td>
+                              <td>
+                                <p class="text-xs font-weight-bold mb-0"><?php  echo($lieu); ?></p>
+                                <p class="text-xs text-secondary mb-0"><?php  echo($marque); ?></p>
+                              </td>
+                              <td class="align-middle text-center text-sm">
+                                <span class="text-secondary text-xs font-weight-bold"><?php  echo($start_date); ?></span>
+                              </td>
+                              <td class="align-middle text-center">
+                                <span class="badge badge-sm bg-gradient-<?php echo $badge ?>"><?php echo $end_date; ?></span>
+                              </td>
+                              <td class="align-middle">
+                                <?php if( current_user_can('administrator')  ) { ?>
+                                  <?php echo '<a class="text-secondary font-weight-bold text-xs" href="'. get_edit_post_link($id) .'">Edit</a>'; ?>
+                                <?php } ?>
+                              </td>
+                            </tr>
+                          <?php endwhile ?>
+                          <?php else : ?>
+                              <td class="align-middle">
+                                <p class="text-xs text-secondary mb-0"><?php echo("Pas d'informations renseignées en base de données") ?></p>
+                              </td>
+                          <?php endif ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div> <!-- end pc -->        
+
         <?php endif; ?>
       <?php endforeach; ?>
   <?php wp_reset_postdata(); ?>
