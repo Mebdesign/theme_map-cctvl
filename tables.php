@@ -478,6 +478,7 @@
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Prestataire</th>
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Valeur</th>
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Service</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Commentaire</th>
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date d'achat</th>
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date de renouvellement</th>
                           <th class="text-secondary opacity-7"></th>
@@ -497,6 +498,7 @@
                           <?php $end_date = date("d/m/Y", strtotime($end)); ?>
                           <?php $valeur = get_sub_field('valeur'); ?>
                           <?php $service = get_sub_field('service'); ?>
+                          <?php $commentaire = get_sub_field('commentaire'); ?>
                           <?php
 
                            $end_time   =   strtotime($end);
@@ -549,7 +551,10 @@
                               </td>
                               <td>
                                 <p class="text-xs font-weight-bold mb-0"><?php  echo($service); ?></p>
-                              </td>                              
+                              </td>    
+                              <td>
+                                <p class="text-xs font-weight-bold mb-0"><?php  echo($commentaire); ?></p>
+                              </td>                                                         
                               <td class="align-middle text-center text-sm">
                                 <span class="text-secondary text-xs font-weight-bold"><?php  echo($start_date); ?></span>
                               </td>
