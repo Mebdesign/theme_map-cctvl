@@ -523,13 +523,11 @@
                                 <div class="d-flex px-2 py-1">
                                   <div class="d-flex flex-column justify-content-center">
                                     <h6 class="mb-0 text-sm"><?php  echo($qte); ?></h6>
-                                    <p class="text-xs text-secondary mb-0"><?php  echo($contact); ?></p>
                                   </div>
                                 </div>
                               </td>
                               <td>
                                 <p class="text-xs font-weight-bold mb-0"><?php  echo($inventaire); ?></p>
-                                <p class="text-xs text-secondary mb-0"><?php  echo($marque); ?></p>
                               </td>
                               <td>
                                 <p class="text-xs text-secondary mb-0"><?php  echo($designation ); ?></p>
@@ -537,8 +535,8 @@
                               <td>
                                 <p class="text-xs font-weight-bold mb-0">
                                   <?php
-                                    if( $contrat):
-                                        echo( $contrat );
+                                    if( $prestataire):
+                                        echo( $prestataire );
                                   ?>
                                 </p><?php
                                     else :
@@ -547,9 +545,11 @@
                                 ?>
                               </td>
                               <td>
-                                <p class="text-xs font-weight-bold mb-0"><?php  echo($lieu); ?></p>
-                                <p class="text-xs text-secondary mb-0"><?php  echo($marque); ?></p>
+                                <p class="text-xs font-weight-bold mb-0"><?php  echo($valeur); ?></p>
                               </td>
+                              <td>
+                                <p class="text-xs font-weight-bold mb-0"><?php  echo($service); ?></p>
+                              </td>                              
                               <td class="align-middle text-center text-sm">
                                 <span class="text-secondary text-xs font-weight-bold"><?php  echo($start_date); ?></span>
                               </td>
