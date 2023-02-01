@@ -484,8 +484,8 @@
                         </tr>
                       </thead>
                       <tbody>
-                      <?php if( have_rows('postes') ): ?>
-                          <?php while( have_rows('postes') ) : the_row(); ?>
+                      <?php if( have_rows('postes_clients') ): ?>
+                          <?php while( have_rows('postes_clients') ) : the_row(); ?>
                           <?php $qte = get_sub_field('quantite'); ?>
                           <?php $inventaire = get_sub_field('n_inventaire'); ?>
                           <?php $designation = get_sub_field('designation'); ?>
